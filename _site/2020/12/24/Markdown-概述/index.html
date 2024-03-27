@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Markdown 概述</title>
+  <meta name='description' content='所思有所记'>
+
+  <link rel="canonical" href="http://localhost:4000/2020/12/24/Markdown-%E6%A6%82%E8%BF%B0/">
+  <link rel="alternate" type="application/rss+xml" title="" href="/feed.xml">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+  <!-- Ionicons -->
+  <link href="https://unpkg.com/ionicons@4.2.2/dist/css/ionicons.min.css" rel="stylesheet">
+
+  <style>
+  
+  .text-left{text-align:left}.text-right{text-align:right}.text-center{text-align:center}.text-justify{text-align:justify}.block{display:block}.inline-block{display:inline-block}.inline{display:inline}.vertical-center{display:flex;align-items:center;justify-content:center}.show{display:block}.hide{display:none}.invisible{visibility:hidden}.float-left{float:left}.float-right{float:right}.no-padding{padding:0}.no-margin{margin:0}.list-reset{list-style-type:none;margin:0;padding:0}.clearfix::after,.clearfix ::before{content:"";display:table;clear:both}.screen-reader-text{clip:rect(1px, 1px, 1px, 1px);height:1px;overflow:hidden;position:absolute !important;width:1px;word-wrap:normal !important}/*! normalize.css v8.0.0 | MIT License | github.com/necolas/normalize.css */html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}h1{font-size:2em;margin:.67em 0}hr{box-sizing:content-box;height:0;overflow:visible}pre{font-family:monospace,monospace;font-size:1em}a{background-color:rgba(0,0,0,0)}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-0.25em}sup{top:-0.5em}img{border-style:none}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0}button,input{overflow:visible}button,select{text-transform:none}button,[type=button],[type=reset],[type=submit]{-webkit-appearance:button}button::-moz-focus-inner,[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner{border-style:none;padding:0}button:-moz-focusring,[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring{outline:1px dotted ButtonText}fieldset{padding:.35em .75em .625em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}progress{vertical-align:baseline}textarea{overflow:auto}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}details{display:block}summary{display:list-item}template{display:none}[hidden]{display:none}body,h1,h2,h3,h4,h5,h6,p,blockquote,pre,dl,dd,ol,ul,fieldset,legend,figure,hr{margin:0;padding:0}li>ul,li>ol{margin-bottom:0}table{border-collapse:collapse;border-spacing:0}h1,h2,h3,h4,h5,h6,ul,ol,dl,blockquote,p,address,hr,table,fieldset,figure,pre{margin-bottom:20px}ul,ol,dd{margin-left:20px}.highlight{background:#f8f8f8}.highlighter-rouge .highlight{background:#eef}.highlight .c{color:#998;font-style:italic}.highlight .err{color:#a61717;background-color:#e3d2d2}.highlight .k{font-weight:bold}.highlight .o{font-weight:bold}.highlight .cm{color:#998;font-style:italic}.highlight .cp{color:#999;font-weight:bold}.highlight .c1{color:#998;font-style:italic}.highlight .cs{color:#999;font-weight:bold;font-style:italic}.highlight .gd{color:#000;background-color:#fdd}.highlight .gd .x{color:#000;background-color:#faa}.highlight .ge{font-style:italic}.highlight .gr{color:#a00}.highlight .gh{color:#999}.highlight .gi{color:#000;background-color:#dfd}.highlight .gi .x{color:#000;background-color:#afa}.highlight .go{color:#888}.highlight .gp{color:#555}.highlight .gs{font-weight:bold}.highlight .gu{color:#aaa}.highlight .gt{color:#a00}.highlight .kc{font-weight:bold}.highlight .kd{font-weight:bold}.highlight .kp{font-weight:bold}.highlight .kr{font-weight:bold}.highlight .kt{color:#458;font-weight:bold}.highlight .m{color:#099}.highlight .s{color:#d14}.highlight .na{color:teal}.highlight .nb{color:#0086b3}.highlight .nc{color:#458;font-weight:bold}.highlight .no{color:teal}.highlight .ni{color:purple}.highlight .ne{color:#900;font-weight:bold}.highlight .nf{color:#900;font-weight:bold}.highlight .nn{color:#555}.highlight .nt{color:navy}.highlight .nv{color:teal}.highlight .ow{font-weight:bold}.highlight .w{color:#bbb}.highlight .mf{color:#099}.highlight .mh{color:#099}.highlight .mi{color:#099}.highlight .mo{color:#099}.highlight .sb{color:#d14}.highlight .sc{color:#d14}.highlight .sd{color:#d14}.highlight .s2{color:#d14}.highlight .se{color:#d14}.highlight .sh{color:#d14}.highlight .si{color:#d14}.highlight .sx{color:#d14}.highlight .sr{color:#009926}.highlight .s1{color:#d14}.highlight .ss{color:#990073}.highlight .bp{color:#999}.highlight .vc{color:teal}.highlight .vg{color:teal}.highlight .vi{color:teal}.highlight .il{color:#099}.container{max-width:1200px;padding-left:20px;padding-right:20px;margin:0 auto}.container-full{max-width:100%;padding-left:20px;padding-right:20px;margin:0 auto}.row{display:flex;flex-wrap:wrap;flex:0 1 auto;flex-direction:row;box-sizing:border-box;margin-left:-20px;margin-right:-20px}.col{padding-left:20px;padding-right:20px}[class^=col-]{flex:auto}.col-0{width:0%}.col-1{width:8.3333333333%}.col-2{width:16.6666666667%}.col-3{width:25%}.col-4{width:33.3333333333%}.col-5{width:41.6666666667%}.col-6{width:50%}.col-7{width:58.3333333333%}.col-8{width:66.6666666667%}.col-9{width:75%}.col-10{width:83.3333333333%}.col-11{width:91.6666666667%}.col-12{width:100%}.push-0{margin-left:0%}.push-1{margin-left:8.3333333333%}.push-2{margin-left:16.6666666667%}.push-3{margin-left:25%}.push-4{margin-left:33.3333333333%}.push-5{margin-left:41.6666666667%}.push-6{margin-left:50%}.push-7{margin-left:58.3333333333%}.push-8{margin-left:66.6666666667%}.push-9{margin-left:75%}.push-10{margin-left:83.3333333333%}.push-11{margin-left:91.6666666667%}.push-12{margin-left:100%}.pull-0{margin-right:0%}.pull-1{margin-right:8.3333333333%}.pull-2{margin-right:16.6666666667%}.pull-3{margin-right:25%}.pull-4{margin-right:33.3333333333%}.pull-5{margin-right:41.6666666667%}.pull-6{margin-right:50%}.pull-7{margin-right:58.3333333333%}.pull-8{margin-right:66.6666666667%}.pull-9{margin-right:75%}.pull-10{margin-right:83.3333333333%}.pull-11{margin-right:91.6666666667%}.pull-12{margin-right:100%}@media(max-width: 992px){.col-d-0{width:0%}.col-d-1{width:8.3333333333%}.col-d-2{width:16.6666666667%}.col-d-3{width:25%}.col-d-4{width:33.3333333333%}.col-d-5{width:41.6666666667%}.col-d-6{width:50%}.col-d-7{width:58.3333333333%}.col-d-8{width:66.6666666667%}.col-d-9{width:75%}.col-d-10{width:83.3333333333%}.col-d-11{width:91.6666666667%}.col-d-12{width:100%}.push-d-0{margin-left:0%}.push-d-1{margin-left:8.3333333333%}.push-d-2{margin-left:16.6666666667%}.push-d-3{margin-left:25%}.push-d-4{margin-left:33.3333333333%}.push-d-5{margin-left:41.6666666667%}.push-d-6{margin-left:50%}.push-d-7{margin-left:58.3333333333%}.push-d-8{margin-left:66.6666666667%}.push-d-9{margin-left:75%}.push-d-10{margin-left:83.3333333333%}.push-d-11{margin-left:91.6666666667%}.push-d-12{margin-left:100%}.pull-d-0{margin-right:0%}.pull-d-1{margin-right:8.3333333333%}.pull-d-2{margin-right:16.6666666667%}.pull-d-3{margin-right:25%}.pull-d-4{margin-right:33.3333333333%}.pull-d-5{margin-right:41.6666666667%}.pull-d-6{margin-right:50%}.pull-d-7{margin-right:58.3333333333%}.pull-d-8{margin-right:66.6666666667%}.pull-d-9{margin-right:75%}.pull-d-10{margin-right:83.3333333333%}.pull-d-11{margin-right:91.6666666667%}.pull-d-12{margin-right:100%}}@media(max-width: 768px){.col-t-0{width:0%}.col-t-1{width:8.3333333333%}.col-t-2{width:16.6666666667%}.col-t-3{width:25%}.col-t-4{width:33.3333333333%}.col-t-5{width:41.6666666667%}.col-t-6{width:50%}.col-t-7{width:58.3333333333%}.col-t-8{width:66.6666666667%}.col-t-9{width:75%}.col-t-10{width:83.3333333333%}.col-t-11{width:91.6666666667%}.col-t-12{width:100%}.push-t-0{margin-left:0%}.push-t-1{margin-left:8.3333333333%}.push-t-2{margin-left:16.6666666667%}.push-t-3{margin-left:25%}.push-t-4{margin-left:33.3333333333%}.push-t-5{margin-left:41.6666666667%}.push-t-6{margin-left:50%}.push-t-7{margin-left:58.3333333333%}.push-t-8{margin-left:66.6666666667%}.push-t-9{margin-left:75%}.push-t-10{margin-left:83.3333333333%}.push-t-11{margin-left:91.6666666667%}.push-t-12{margin-left:100%}.pull-t-0{margin-right:0%}.pull-t-1{margin-right:8.3333333333%}.pull-t-2{margin-right:16.6666666667%}.pull-t-3{margin-right:25%}.pull-t-4{margin-right:33.3333333333%}.pull-t-5{margin-right:41.6666666667%}.pull-t-6{margin-right:50%}.pull-t-7{margin-right:58.3333333333%}.pull-t-8{margin-right:66.6666666667%}.pull-t-9{margin-right:75%}.pull-t-10{margin-right:83.3333333333%}.pull-t-11{margin-right:91.6666666667%}.pull-t-12{margin-right:100%}}@media(max-width: 576px){.col-m-0{width:0%}.col-m-1{width:8.3333333333%}.col-m-2{width:16.6666666667%}.col-m-3{width:25%}.col-m-4{width:33.3333333333%}.col-m-5{width:41.6666666667%}.col-m-6{width:50%}.col-m-7{width:58.3333333333%}.col-m-8{width:66.6666666667%}.col-m-9{width:75%}.col-m-10{width:83.3333333333%}.col-m-11{width:91.6666666667%}.col-m-12{width:100%}.push-m-0{margin-left:0%}.push-m-1{margin-left:8.3333333333%}.push-m-2{margin-left:16.6666666667%}.push-m-3{margin-left:25%}.push-m-4{margin-left:33.3333333333%}.push-m-5{margin-left:41.6666666667%}.push-m-6{margin-left:50%}.push-m-7{margin-left:58.3333333333%}.push-m-8{margin-left:66.6666666667%}.push-m-9{margin-left:75%}.push-m-10{margin-left:83.3333333333%}.push-m-11{margin-left:91.6666666667%}.push-m-12{margin-left:100%}.pull-m-0{margin-right:0%}.pull-m-1{margin-right:8.3333333333%}.pull-m-2{margin-right:16.6666666667%}.pull-m-3{margin-right:25%}.pull-m-4{margin-right:33.3333333333%}.pull-m-5{margin-right:41.6666666667%}.pull-m-6{margin-right:50%}.pull-m-7{margin-right:58.3333333333%}.pull-m-8{margin-right:66.6666666667%}.pull-m-9{margin-right:75%}.pull-m-10{margin-right:83.3333333333%}.pull-m-11{margin-right:91.6666666667%}.pull-m-12{margin-right:100%}}@media(max-width: 992px){.col-d-0{width:0%}.col-d-1{width:8.3333333333%}.col-d-2{width:16.6666666667%}.col-d-3{width:25%}.col-d-4{width:33.3333333333%}.col-d-5{width:41.6666666667%}.col-d-6{width:50%}.col-d-7{width:58.3333333333%}.col-d-8{width:66.6666666667%}.col-d-9{width:75%}.col-d-10{width:83.3333333333%}.col-d-11{width:91.6666666667%}.col-d-12{width:100%}.push-d-0{margin-left:0%}.push-d-1{margin-left:8.3333333333%}.push-d-2{margin-left:16.6666666667%}.push-d-3{margin-left:25%}.push-d-4{margin-left:33.3333333333%}.push-d-5{margin-left:41.6666666667%}.push-d-6{margin-left:50%}.push-d-7{margin-left:58.3333333333%}.push-d-8{margin-left:66.6666666667%}.push-d-9{margin-left:75%}.push-d-10{margin-left:83.3333333333%}.push-d-11{margin-left:91.6666666667%}.push-d-12{margin-left:100%}.pull-d-0{margin-right:0%}.pull-d-1{margin-right:8.3333333333%}.pull-d-2{margin-right:16.6666666667%}.pull-d-3{margin-right:25%}.pull-d-4{margin-right:33.3333333333%}.pull-d-5{margin-right:41.6666666667%}.pull-d-6{margin-right:50%}.pull-d-7{margin-right:58.3333333333%}.pull-d-8{margin-right:66.6666666667%}.pull-d-9{margin-right:75%}.pull-d-10{margin-right:83.3333333333%}.pull-d-11{margin-right:91.6666666667%}.pull-d-12{margin-right:100%}}@media(max-width: 768px){.col-t-0{width:0%}.col-t-1{width:8.3333333333%}.col-t-2{width:16.6666666667%}.col-t-3{width:25%}.col-t-4{width:33.3333333333%}.col-t-5{width:41.6666666667%}.col-t-6{width:50%}.col-t-7{width:58.3333333333%}.col-t-8{width:66.6666666667%}.col-t-9{width:75%}.col-t-10{width:83.3333333333%}.col-t-11{width:91.6666666667%}.col-t-12{width:100%}.push-t-0{margin-left:0%}.push-t-1{margin-left:8.3333333333%}.push-t-2{margin-left:16.6666666667%}.push-t-3{margin-left:25%}.push-t-4{margin-left:33.3333333333%}.push-t-5{margin-left:41.6666666667%}.push-t-6{margin-left:50%}.push-t-7{margin-left:58.3333333333%}.push-t-8{margin-left:66.6666666667%}.push-t-9{margin-left:75%}.push-t-10{margin-left:83.3333333333%}.push-t-11{margin-left:91.6666666667%}.push-t-12{margin-left:100%}.pull-t-0{margin-right:0%}.pull-t-1{margin-right:8.3333333333%}.pull-t-2{margin-right:16.6666666667%}.pull-t-3{margin-right:25%}.pull-t-4{margin-right:33.3333333333%}.pull-t-5{margin-right:41.6666666667%}.pull-t-6{margin-right:50%}.pull-t-7{margin-right:58.3333333333%}.pull-t-8{margin-right:66.6666666667%}.pull-t-9{margin-right:75%}.pull-t-10{margin-right:83.3333333333%}.pull-t-11{margin-right:91.6666666667%}.pull-t-12{margin-right:100%}}@media(max-width: 576px){.col-m-0{width:0%}.col-m-1{width:8.3333333333%}.col-m-2{width:16.6666666667%}.col-m-3{width:25%}.col-m-4{width:33.3333333333%}.col-m-5{width:41.6666666667%}.col-m-6{width:50%}.col-m-7{width:58.3333333333%}.col-m-8{width:66.6666666667%}.col-m-9{width:75%}.col-m-10{width:83.3333333333%}.col-m-11{width:91.6666666667%}.col-m-12{width:100%}.push-m-0{margin-left:0%}.push-m-1{margin-left:8.3333333333%}.push-m-2{margin-left:16.6666666667%}.push-m-3{margin-left:25%}.push-m-4{margin-left:33.3333333333%}.push-m-5{margin-left:41.6666666667%}.push-m-6{margin-left:50%}.push-m-7{margin-left:58.3333333333%}.push-m-8{margin-left:66.6666666667%}.push-m-9{margin-left:75%}.push-m-10{margin-left:83.3333333333%}.push-m-11{margin-left:91.6666666667%}.push-m-12{margin-left:100%}.pull-m-0{margin-right:0%}.pull-m-1{margin-right:8.3333333333%}.pull-m-2{margin-right:16.6666666667%}.pull-m-3{margin-right:25%}.pull-m-4{margin-right:33.3333333333%}.pull-m-5{margin-right:41.6666666667%}.pull-m-6{margin-right:50%}.pull-m-7{margin-right:58.3333333333%}.pull-m-8{margin-right:66.6666666667%}.pull-m-9{margin-right:75%}.pull-m-10{margin-right:83.3333333333%}.pull-m-11{margin-right:91.6666666667%}.pull-m-12{margin-right:100%}}@media(max-width: 992px){.col-d-0{width:0%}.col-d-1{width:8.3333333333%}.col-d-2{width:16.6666666667%}.col-d-3{width:25%}.col-d-4{width:33.3333333333%}.col-d-5{width:41.6666666667%}.col-d-6{width:50%}.col-d-7{width:58.3333333333%}.col-d-8{width:66.6666666667%}.col-d-9{width:75%}.col-d-10{width:83.3333333333%}.col-d-11{width:91.6666666667%}.col-d-12{width:100%}.push-d-0{margin-left:0%}.push-d-1{margin-left:8.3333333333%}.push-d-2{margin-left:16.6666666667%}.push-d-3{margin-left:25%}.push-d-4{margin-left:33.3333333333%}.push-d-5{margin-left:41.6666666667%}.push-d-6{margin-left:50%}.push-d-7{margin-left:58.3333333333%}.push-d-8{margin-left:66.6666666667%}.push-d-9{margin-left:75%}.push-d-10{margin-left:83.3333333333%}.push-d-11{margin-left:91.6666666667%}.push-d-12{margin-left:100%}.pull-d-0{margin-right:0%}.pull-d-1{margin-right:8.3333333333%}.pull-d-2{margin-right:16.6666666667%}.pull-d-3{margin-right:25%}.pull-d-4{margin-right:33.3333333333%}.pull-d-5{margin-right:41.6666666667%}.pull-d-6{margin-right:50%}.pull-d-7{margin-right:58.3333333333%}.pull-d-8{margin-right:66.6666666667%}.pull-d-9{margin-right:75%}.pull-d-10{margin-right:83.3333333333%}.pull-d-11{margin-right:91.6666666667%}.pull-d-12{margin-right:100%}}@media(max-width: 768px){.col-t-0{width:0%}.col-t-1{width:8.3333333333%}.col-t-2{width:16.6666666667%}.col-t-3{width:25%}.col-t-4{width:33.3333333333%}.col-t-5{width:41.6666666667%}.col-t-6{width:50%}.col-t-7{width:58.3333333333%}.col-t-8{width:66.6666666667%}.col-t-9{width:75%}.col-t-10{width:83.3333333333%}.col-t-11{width:91.6666666667%}.col-t-12{width:100%}.push-t-0{margin-left:0%}.push-t-1{margin-left:8.3333333333%}.push-t-2{margin-left:16.6666666667%}.push-t-3{margin-left:25%}.push-t-4{margin-left:33.3333333333%}.push-t-5{margin-left:41.6666666667%}.push-t-6{margin-left:50%}.push-t-7{margin-left:58.3333333333%}.push-t-8{margin-left:66.6666666667%}.push-t-9{margin-left:75%}.push-t-10{margin-left:83.3333333333%}.push-t-11{margin-left:91.6666666667%}.push-t-12{margin-left:100%}.pull-t-0{margin-right:0%}.pull-t-1{margin-right:8.3333333333%}.pull-t-2{margin-right:16.6666666667%}.pull-t-3{margin-right:25%}.pull-t-4{margin-right:33.3333333333%}.pull-t-5{margin-right:41.6666666667%}.pull-t-6{margin-right:50%}.pull-t-7{margin-right:58.3333333333%}.pull-t-8{margin-right:66.6666666667%}.pull-t-9{margin-right:75%}.pull-t-10{margin-right:83.3333333333%}.pull-t-11{margin-right:91.6666666667%}.pull-t-12{margin-right:100%}}@media(max-width: 576px){.col-m-0{width:0%}.col-m-1{width:8.3333333333%}.col-m-2{width:16.6666666667%}.col-m-3{width:25%}.col-m-4{width:33.3333333333%}.col-m-5{width:41.6666666667%}.col-m-6{width:50%}.col-m-7{width:58.3333333333%}.col-m-8{width:66.6666666667%}.col-m-9{width:75%}.col-m-10{width:83.3333333333%}.col-m-11{width:91.6666666667%}.col-m-12{width:100%}.push-m-0{margin-left:0%}.push-m-1{margin-left:8.3333333333%}.push-m-2{margin-left:16.6666666667%}.push-m-3{margin-left:25%}.push-m-4{margin-left:33.3333333333%}.push-m-5{margin-left:41.6666666667%}.push-m-6{margin-left:50%}.push-m-7{margin-left:58.3333333333%}.push-m-8{margin-left:66.6666666667%}.push-m-9{margin-left:75%}.push-m-10{margin-left:83.3333333333%}.push-m-11{margin-left:91.6666666667%}.push-m-12{margin-left:100%}.pull-m-0{margin-right:0%}.pull-m-1{margin-right:8.3333333333%}.pull-m-2{margin-right:16.6666666667%}.pull-m-3{margin-right:25%}.pull-m-4{margin-right:33.3333333333%}.pull-m-5{margin-right:41.6666666667%}.pull-m-6{margin-right:50%}.pull-m-7{margin-right:58.3333333333%}.pull-m-8{margin-right:66.6666666667%}.pull-m-9{margin-right:75%}.pull-m-10{margin-right:83.3333333333%}.pull-m-11{margin-right:91.6666666667%}.pull-m-12{margin-right:100%}}img[data-action=zoom]{cursor:pointer;cursor:-webkit-zoom-in;cursor:-moz-zoom-in}.zoom-img,.zoom-img-wrap{position:relative;z-index:666;-webkit-transition:all 300ms;-o-transition:all 300ms;transition:all 300ms}img.zoom-img{cursor:pointer;cursor:-webkit-zoom-out;cursor:-moz-zoom-out}.zoom-overlay{z-index:420;background:#fff;position:fixed;top:0;left:0;right:0;bottom:0;pointer-events:none;opacity:0;-webkit-transition:opacity 300ms;-o-transition:opacity 300ms;transition:opacity 300ms}.zoom-overlay-open .zoom-overlay{opacity:1}.zoom-overlay-open,.zoom-overlay-transitioning{cursor:default}*,*::after,*::before{box-sizing:border-box}body{font-family:"FZFWZhuZiAYuanJWR","FiraCode-Regular","Roboto",Helvetica Neue,Helvetica,Arial,sans-serif;font-size:16px;line-height:26px;color:#393e46;background-color:#fff;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}body input,body textarea{border:1px solid #e6eef0;outline:none}body input:focus:required:invalid,body textarea:focus:required:invalid{border-color:#e02f40}body input:required:valid,body textarea:required:valid{border-color:#34a74e}::placeholder{color:#666}*::selection{color:#fff;background-color:#393e46}h1,h2,h3,h4,h5,h6{font-family:"FiraCode-Regular","Roboto",Helvetica Neue,Helvetica,Arial,sans-serif;line-height:initial;letter-spacing:.5px}h1{font-size:36px}h2{font-size:28px}h3{font-size:24px}h4{font-size:20px}h5{font-size:18px}h6{font-size:16px}blockquote{margin:30px -100px;font-size:28px;line-height:45px;letter-spacing:.5px;font-style:normal;text-align:center}@media only screen and (max-width: 768px){blockquote{margin:30px 0;font-size:24px;line-height:38px}}pre{overflow:auto;padding:15px;margin-bottom:0;font-size:14px;white-space:pre-wrap;word-wrap:break-word;word-break:break-all}img,.zoom-img-wrap{max-width:100%;height:auto;vertical-align:middle}img+em,.zoom-img-wrap+em{text-align:center;display:block;font-style:normal;font-weight:normal;font-size:14px;color:#bbb}a{text-decoration:none;color:#f6b141;transition:all .35s}a:hover{color:#f49d10}a:active{color:#c87f09}hr{display:block;height:1px;margin:40px 0;border:0;background:#e6eef0}code{font-family:"FiraCode-Regular"}code.highlighter-rouge{font-family:"Lato-Regular";font-size:14px;background-color:#40a9ff;color:#fff}.highlighter-rouge{background-color:#f8f8f8;color:#555;padding:2px 5px;margin:0 5px;border-radius:3px}.highlighter-rouge .highlight{background-color:rgba(0,0,0,0)}.footnotes{font-size:14px;font-weight:700;font-style:italic;background:#f8f8f8;padding:15px}.footnotes:before{content:"注：";font-size:16px}.footnotes ol{margin-top:10px;margin-bottom:0}.footnotes p{margin-bottom:10px}.top{position:fixed;bottom:40px;right:-100px;z-index:1;width:35px;height:35px;text-align:center;line-height:35px;background-color:#393e46;color:#fff;cursor:pointer;transition:all .25s ease}.top.is-active{right:40px}.top:hover{background-color:#000}@media only screen and (max-width: 768px){.top{bottom:25px}.top.is-active{right:30px}}.header{position:relative;height:100px}.header .header__overlay{position:fixed;top:0;right:0;bottom:0;left:0;z-index:10;background-color:rgba(17,17,17,.7);cursor:pointer;opacity:0;visibility:hidden;transition:all .5s ease}@media only screen and (max-width: 992px){.header .header__overlay.is-visible{opacity:1;visibility:visible}}.logo{position:absolute;top:50%;left:0;transform:translateY(-50%)}.logo .logo__link{font-size:26px;font-weight:700;letter-spacing:.5px;color:#393e46;text-decoration:none;display:flex;align-items:center}.logo .logo__link .logo__title{margin-left:10px}.logo .logo__link:hover{color:#f6b141}.logo .logo__image{max-height:50px}.logo .logo__link{font-size:28px;color:#000}.main-nav{position:absolute;top:50%;right:0px;transform:translate(-50%, -50%)}.main-nav .nav-icon__close{display:none;font-size:24px;text-align:right;cursor:pointer}.main-nav .nav-icon__close:hover{color:#000}.main-nav .nav__title{display:none}.main-nav .nav__list{white-space:nowrap}.main-nav .nav__list .nav__item{display:inline-block}.main-nav .nav__list .nav__item .nav__link{display:inline-block;padding:10px 30px;font-size:14px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:#393e46}.main-nav .nav__list .nav__item .nav__link:hover{color:#000}@media only screen and (max-width: 992px){.main-nav{position:fixed;top:0;left:inherit;right:-300px;bottom:0;transform:none;z-index:100;width:300px;height:100vh;padding:40px 30px 30px;transition:right .5s cubic-bezier(0.7, 0.4, 0, 1);background:#fff}.main-nav.is-open{right:0}.main-nav .nav-icon__close{display:block}.main-nav .nav__title{display:block;padding-left:30px;padding-bottom:7px;margin-bottom:10px;color:#bbb;border-bottom:1px solid #e6eef0}.main-nav .nav__list .nav__item{display:block}}.nav-buttons{position:absolute;top:50%;right:0;transform:translateY(-50%);font-size:21px}.nav-buttons .nav__icon{color:#393e46;cursor:pointer}.nav-buttons .nav__icon:hover{color:#000}.nav-buttons .nav__icon-menu{display:none;margin-right:10px}.nav-buttons .nav__icon-menu:hover{color:#000}@media only screen and (max-width: 992px){.nav-buttons .nav__icon-menu{display:inline-block}}.hero{padding:40px 0;margin-bottom:80px;background:#f5f5f5}.hero .last-item{display:flex}.hero .hero__content{display:flex;flex-direction:column;justify-content:center;width:100%;padding:0 40px 0 0}.hero .hero__content .hero__title{font-size:38px;font-weight:normal}.hero .hero__content .hero__subtitle{font-size:18px;line-height:32px;letter-spacing:.5px}.hero .hero__content .hero__social{display:flex}.hero .hero__content .hero__social-title{font-weight:700}.hero .hero__image img{box-shadow:0 1px 4px rgba(0,0,0,.15)}@media only screen and (max-width: 992px){.hero .hero__content{padding:0}.hero .hero__content .hero__subtitle{font-size:16px;line-height:28px}}@media only screen and (max-width: 768px){.hero{margin-bottom:40px}.hero .last-item{order:1}.hero .hero__content .hero__title{margin-bottom:20px;font-size:27px}.hero .hero__image{margin-bottom:20px}.hero .hero__image img{box-shadow:none}}@media only screen and (max-width: 576px){.hero{padding:40px 0}}.search{position:fixed;top:0;left:0;right:0;bottom:0;z-index:-1;transform:scale(0.95);opacity:0;background:#fff;transition:all 250ms ease}.search.is-visible{transform:scale(1);z-index:100;opacity:1;transition:all 250ms ease}.search__box{width:50%;margin:0 auto;padding-top:100px}@media only screen and (max-width: 992px){.search__box{width:70%;padding-top:70px}}@media only screen and (max-width: 576px){.search__box{width:100%;padding-top:30px}}.search__group{margin-bottom:50px}.search__group .search__close{margin-bottom:30px;font-size:27px;text-align:right;cursor:pointer}.search__group .search__close:hover{color:#000}.search__group .search__text{width:100%;padding:20px 20px 20px 30px;letter-spacing:.5px;border-radius:30px;border:1px solid #f8f8f8;color:#393e46;background:#f8f8f8}.search__group .search__text::placeholder{letter-spacing:.5px;color:rgba(57,62,70,.7)}.search-results-list{height:65vh;margin:0;padding:0 20px;list-style:decimal;overflow:auto;white-space:normal}.search-results-list .search-results__item{margin-bottom:10px;padding-left:10px;padding-bottom:10px;font-weight:700;border-bottom:1px solid #f5efef}.search-results-list .search-results__item:first-child{padding-top:20px;border-top:1px solid #f5efef}.search-results-list .search-results__link{font-size:18px;font-weight:700;letter-spacing:.5px;color:#393e46}.search-results-list .search-results__link:hover{color:#000}.search-results-list .search-results__date{font-size:12px;color:#bbb}.search-results-list .no-results{list-style:none;padding:20px 0;font-size:18px;font-weight:700;letter-spacing:.5px;border-top:1px solid #f5efef;border-bottom:1px solid #f5efef}.contact .contact__list li{margin-left:15px;display:inline-block}.contact .contact__list li a{font-size:18px;color:#bbb}.contact .contact__list li a:hover{color:#393e46}.pagination{margin:20px 0 40px;padding:40px 0;text-align:center}@media only screen and (max-width: 576px){.pagination{margin:0 0 20px}}.pagination__list{display:flex;justify-content:space-between;align-items:center}.pagination__list .next-link,.pagination__list .previous-link,.pagination__list .disabled{display:inline-block;width:140px;height:50px;line-height:50px;font-size:12px;letter-spacing:1px;text-transform:uppercase;transition:all .35s;box-shadow:0 1px 3px 0 rgba(0,0,0,.15);background:#fff}.pagination__list .next-link,.pagination__list .previous-link{color:#393e46}.pagination__list .next-link:hover,.pagination__list .previous-link:hover{color:#000}.pagination__list .disabled{color:#bbb;cursor:not-allowed}.pagination__list .counter-box a,.pagination__list .counter-box span{padding:0 5px;font-size:15px;color:#393e46}.pagination__list .counter-box .active-link{font-weight:700}@media only screen and (max-width: 576px){.pagination__list{flex-direction:column}.pagination__list .next-link,.pagination__list .previous-link,.pagination__list .disabled{margin:10px 0}}.subscribe{width:430px;max-width:100%;margin:0 auto 80px;text-align:center}.subscribe .subscribe__title{margin-bottom:10px;font-size:37px;line-height:57px}.subscribe .subscribe__subtitle{margin-bottom:30px;font-size:17px;line-height:27px}.subscribe .subscribe-form .subscribe-group{margin-bottom:30px}.subscribe .subscribe-form .subscribe__email{width:100%;padding:17px;font-size:16px;text-align:center;outline:none;border:none;border-bottom:3px solid #e6eef0}.subscribe .subscribe-form .subscribe__email::placeholder{font-size:18px;color:#e6eef0}.subscribe .subscribe-form .subscribe__button{width:127px;height:57px;font-size:14px;font-weight:700;letter-spacing:.5px;border-radius:30px;border:none;background:#e6eef0;cursor:pointer;transition:all .35s}.subscribe .subscribe-form .subscribe__button:hover{color:#fff;background:#393e46}@media only screen and (max-width: 576px){.subscribe{margin:0 auto 40px}.subscribe .subscribe__subtitle{font-size:16px;line-height:26px}}.instagram-box{position:relative;margin:0 0 80px}.instagram-box .istagram-contact{position:absolute;left:50%;top:50%;transform:translate(-50%, -50%);z-index:1;display:block;padding:8px 15px;font-size:14px;letter-spacing:.5px;border-radius:3px;box-shadow:0 4px 4px 0 rgba(0,0,0,.15);color:#393e46;background:#fff}.instagram-box .istagram-contact:hover{color:#000}.instagram-box .instagram .instagram-item{width:16.6%;display:inline-block;transition:all .35s}.instagram-box .instagram .instagram-item:hover{opacity:.9}@media only screen and (max-width: 768px){.instagram-box .instagram .instagram-item{width:33.3%}}@media only screen and (max-width: 576px){.instagram-box{margin:0 0 40px}}.footer{position:relative;padding:80px 0 40px;text-align:center;border-top:1px solid #e6eef0;background:#f5f5f5}.footer .contact{margin-bottom:15px}.footer .copyright a{color:#393e46}.footer .copyright a:hover{color:#f6b141}@media only screen and (max-width: 576px){.footer{padding:40px 0 20px}}.lates-title{position:relative;margin-bottom:80px;font-size:14px;line-height:24px;letter-spacing:1px;text-transform:uppercase;font-weight:normal;text-align:center}.lates-title:after,.lates-title:before{content:"";display:block;position:absolute;top:50%;transform:translateY(-50%);height:1px;background:#e6eef0}.lates-title:after{width:calc(50% - 90px);left:0}.lates-title:before{width:calc(50% - 90px);right:0}@media only screen and (max-width: 768px){.lates-title{margin-bottom:40px}.lates-title:after,.lates-title:before{width:calc(50% - 70px)}}.page-title-box{padding:40px 0;border-top:1px solid #e6eef0}.page-title-box .page-title{font-size:38px;line-height:1.5;margin:0}@media only screen and (max-width: 576px){.page-title-box{padding:20px 0}.page-title-box .page-title{font-size:28px;line-height:1.5}}.page__head .page-image{background-size:cover;background-position:center;background-repeat:no-repeat;background-color:#e6eef0}.page__head .page-image:after{content:"";display:table;width:100%;min-height:300px;padding-top:50%}.page{margin:0 auto}.page img{margin:30px 0}@media only screen and (max-width: 768px){.page{margin:10px auto}}.page-box{text-align:center}.page-box .back-arrow a{display:inline-block;margin-left:10px;color:#393e46;font-weight:700}.page-box .back-arrow a:hover{color:#000}.article{margin-bottom:40px;width:100%}.article .article__wrapper{display:flex;align-items:center}.article .article__image{width:40%;display:block;background-position:center;background-size:cover;background-repeat:no-repeat;background-color:#e6eef0}.article .article__image:hover{opacity:.9}.article .article__image:after{content:"";display:table;width:100%;padding-bottom:70%}.article .article__content{width:70%;padding:24px 50px;margin-left:-10%;z-index:1;border-radius:3px;background:rgba(255,255,255,.98);box-shadow:0 1px 4px rgba(0,0,0,.15)}.article .article__content .article__tag{font-size:12px;letter-spacing:.5px;font-weight:700;text-transform:uppercase}.article .article__content .article__title{margin-bottom:20px;font-size:30px}.article .article__content .article__title a{color:#393e46}.article .article__content .article__title a:hover{color:#000}.article .article__content .article__excerpt{margin-bottom:20px;font-size:16px;line-height:26px}.article .article__content .article__meta{font-size:12px;line-height:18px;text-transform:uppercase;color:#bbb}.article .article__content .article__footer{display:flex;align-items:center}.article .article__content .article__footer .read-more{margin-left:auto;font-size:12px;line-height:18px;letter-spacing:1px;text-transform:uppercase;border-bottom:1px solid rgba(0,0,0,0);color:#bbb}.article .article__content .article__footer .read-more:hover{color:#393e46;border-color:#f6b141}.article .article-without-image{width:100%;margin-left:auto}@media only screen and (max-width: 768px){.article .article__wrapper{flex-direction:column}.article .article__image{width:100%}.article .article__content{width:90%;padding:20px;margin:-35% 0 0 0}.article .article-without-image{width:90%;margin:0}}@media only screen and (max-width: 576px){.article .article__content .article__title{font-size:27px}}.post-title-box{padding:40px 0;border-top:1px solid #e6eef0}.post-title-box .post-title{margin-bottom:10px;width:80%;max-width:100%;font-size:38px;line-height:1.5}.post-title-box .post__date{margin-left:20px;font-weight:700}@media only screen and (max-width: 576px){.post-title-box{padding:20px 0}.post-title-box .post-title{font-size:28px;line-height:1.5}}.post__info{display:flex;align-items:center}.post__info .post__author{margin-right:10px;font-weight:700}.post__info .post__author .author-name{color:#bbb;border-bottom:1px solid rgba(0,0,0,0)}.post__info .post__author .author-name:hover{border-bottom:1px solid #bbb}.post__info .post__tags .post__tags-tag{position:relative;padding-left:15px;font-weight:700}.post__info .post__tags .post__tags-tag:before{content:"";position:absolute;top:50%;left:0;transform:translateY(-50%);width:5px;height:5px;border-radius:50%;background:#393e46}.post__head{width:66%;margin:0 auto;padding-bottom:20px}@media only screen and (max-width: 576px){.post__head{width:100%}}.post-image{background-size:cover;background-position:center;background-repeat:no-repeat;background-color:#e6eef0}.post-image:after{content:"";display:table;width:100%;min-height:300px;padding-top:50%}.post{margin:0 auto}.post.post-no-image{margin:0 auto 0}@media only screen and (max-width: 576px){.post{margin:40px auto}.post.post-no-image{margin:0 auto 40px}}.post img{margin:30px 0}.post__content{margin-bottom:40px}.post__share{display:flex}.post__share .share__title{margin-right:10px;font-size:18px;font-weight:700;letter-spacing:.5px}.post__share .share__list .share__item{display:inline-block;margin:0 10px}.post__share .share__list .share__item a{font-size:18px;color:#bbb}.post__share .share__list .share__item a:hover{color:#393e46}.post__navigation{display:flex;align-items:baseline;margin-bottom:80px;padding-bottom:80px;border-bottom:1px solid #e6eef0}.post__navigation .prev,.post__navigation .next{flex:1 0 50%}.post__navigation .prev:last-child,.post__navigation .next:last-child{padding-right:0}.post__navigation .prev .post__nav__image,.post__navigation .next .post__nav__image{display:block;margin-bottom:40px;background-position:center;background-size:cover;background-repeat:no-repeat;background-color:#e6eef0;transition:.35s ease-in-out}.post__navigation .prev .post__nav__image:hover,.post__navigation .next .post__nav__image:hover{opacity:.9}.post__navigation .prev .post__nav__image:after,.post__navigation .next .post__nav__image:after{content:"";display:table;width:100%;padding-bottom:65%}.post__navigation .prev .post__nav__title,.post__navigation .next .post__nav__title{margin-bottom:20px;font-size:27px;line-height:37px;text-transform:uppercase;letter-spacing:2px;text-align:center}.post__navigation .prev .post__nav__title a,.post__navigation .next .post__nav__title a{display:inline-block;max-width:250px;padding:0 10px;vertical-align:middle;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#393e46}.post__navigation .prev .post__nav__title a:hover,.post__navigation .next .post__nav__title a:hover{color:#000}.post__navigation .prev{padding-right:10px}.post__navigation .next{padding-left:10px}.post__navigation .prev__excerpt,.post__navigation .next__excerpt{width:100%;max-width:400px;margin:0 auto;text-align:center}@media only screen and (max-width: 768px){.post__navigation{flex-wrap:wrap}.post__navigation .prev,.post__navigation .next{flex:1 0 100%;padding:0}.post__navigation .next{margin-top:40px}}@media only screen and (max-width: 576px){.post__navigation{margin-bottom:40px;padding-bottom:40px}.post__navigation .prev .post__nav__image,.post__navigation .next .post__nav__image{margin-bottom:20px}}.comments{margin-bottom:80px}@media only screen and (max-width: 576px){.comments{margin-bottom:40px}}.arhive-head{padding:80px 0;margin-bottom:40px;background:#f5f5f5}.arhive-head .archive-title{text-align:center;font-weight:normal}.arhive-head .archive-title span{font-weight:700}@media only screen and (max-width: 576px){.arhive-head{margin-bottom:40px}}
+  </style>
+</head>
+
+<body>
+
+  
+
+  <div class="container">
+  <div class="row">
+    <div class="col col-12">
+      <!-- begin header -->
+      <header class="header">
+
+        <div class="logo">
+          <a class="logo__link" href="/">
+          
+            <img class="logo__image" src="/images/logo.svg" alt="是阿浪呀">
+          
+          
+          <span class="logo__title">是阿浪呀</span>
+          
+          </a>
+        </div>
+
+        <nav class="main-nav">
+
+          <div class="main-nav__box">
+            <div class="nav-icon__close">
+              <i class="ion ion-ios-close-circle-outline"></i>
+            </div>
+
+            <div class="nav__title">菜单</div>
+
+            <ul class="nav__list list-reset">
+              <!-- <li class="nav__item">
+                <a href="/" class="nav__link">主页</a>
+              </li> -->
+              
+                
+              
+                
+              
+              <li class="nav__item">
+                <a href="/about/" class="nav__link">关于</a>
+              </li>
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+              <li class="nav__item">
+                <a href="/styleguide/" class="nav__link">风格指南</a>
+              </li>
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            </ul>
+
+          </div>
+        </nav>
+
+        <div class="nav-buttons">
+          <i class="nav__icon nav__icon-menu ion ion-md-menu" aria-label="Menu Icon"></i>
+          <i class="nav__icon nav__icon-search ion ion-md-search" aria-label="Search Icon"></i>
+        </div>
+
+        <div class="header__overlay"></div>
+      </header>
+      <!-- end header -->
+    </div>
+  </div>
+</div>
+
+  <!-- begin content -->
+  <main class="content" aria-label="Content">
+    <div class="container">
+  <div class="post-title-box">
+    <div class="row">
+      <div class="col col-10 push-2 col-11 push-t-1 col-m-12 push-m-0">
+        <h1 class="post-title">Markdown 概述</h1>
+
+        <div class="post__info">
+          <div class="post__author">
+            <span>By</span>
+            <a href="/about/" class="author-name"
+              >阿浪</a
+            >
+          </div>
+
+          
+          <div class="post__tags">
+            
+            <a href="/tag/Markdown" class="post__tags-tag"
+              >Markdown</a
+            >
+            
+          </div>
+          
+
+          <span class="post__date">
+            <time datetime="2020-12-24T17:06:06+08:00"
+              >2020.12.24 17:06</time
+            >
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+   
+  <div class="post__head">
+    <div
+      class="post-image"
+      style="background-image: url(/images/markdown.jpg)"
+    ></div>
+  </div>
+  
+</div>
+
+<div class="container">
+  <div class="row">
+    <!-- begin post -->
+    <article class="post  col col-8 col-t-10 col-m-12">
+      <div class="post__content"><h2 id="一块级元素">一、块级元素</h2>
+
+<h3 id="1-段落和换行">1. 段落和换行</h3>
+<ul>
+  <li>md 文件中，如果你需要换行，可以在一个段落之后加上一个或多个空行（即使空行中包含了空格或者空白字符也被认为是空行）；</li>
+  <li>如果你需要添加一个<code class="language-plaintext highlighter-rouge">&lt;br /&gt;</code>标签，则可以在行尾加上两个及以上的空格，然后换行（这种方式不会打断有序列表，上一种方式则相反）；</li>
+</ul>
+
+<hr />
+<h3 id="2-标题">2. 标题</h3>
+<p>每行开头使用1~6个<code class="language-plaintext highlighter-rouge">#</code>字符来对应1~6级标题（h1~h6）；</p>
+
+<hr />
+
+<h3 id="3-块引用">3. 块引用</h3>
+<ul>
+  <li>最好在每一行行首放一个<code class="language-plaintext highlighter-rouge">&gt;</code>字符，或者只在每一个需要强制换行的段落的首行前面加上<code class="language-plaintext highlighter-rouge">&gt;</code>（使用 vscode 格式化 md 文档时，第二种方式会自动转换为第一种）；</li>
+  <li>块引用可以嵌套使用；</li>
+  <li>块引用可以包含 Markdown 元素，包括标题、列表和代码块；</li>
+</ul>
+
+<hr />
+
+<h3 id="4-列表">4. 列表</h3>
+<ol>
+  <li>无序列表在行首使用星号<code class="language-plaintext highlighter-rouge">*</code>或加号<code class="language-plaintext highlighter-rouge">+</code>或连字符<code class="language-plaintext highlighter-rouge">-</code>作为列表标记；</li>
+  <li>有序列表在行首使用数字以及英文句号组合<code class="language-plaintext highlighter-rouge">1.</code>（number-period-space）作为列表标记；</li>
+  <li>有序列表的列表标记，对于最终生成 HTML 是没有影响的，也就是说即便使用错误的列表序号，最终生成的列表仍然会以序号 1 开始，依次排序（所以在有序列表里，你哪怕写个957、369，最终在 HTML 上的体现也依然是123）；</li>
+  <li>以防在无意中触发有序列表，可以在数字后添加转义符号：<code class="language-plaintext highlighter-rouge">1\. </code>；</li>
+</ol>
+
+<hr />
+
+<h3 id="5-代码块">5. 代码块</h3>
+<ul>
+  <li>在 md 中插入代码块，只需要每行开始缩进4个空格或一个水平制表符（这一行之前需要一行以上的空行，以及一行正文），代码块就会被<code class="language-plaintext highlighter-rouge">&lt;pre&gt;</code>和<code class="language-plaintext highlighter-rouge">&lt;code&gt;</code>标签包裹，原样呈现其中内容；</li>
+  <li>代码块中，<code class="language-plaintext highlighter-rouge">&lt;</code>、<code class="language-plaintext highlighter-rouge">&gt;</code>和<code class="language-plaintext highlighter-rouge">&amp;</code>会自动转换为HTML字符实体；</li>
+  <li>md 的语法会在代码块中失效；</li>
+</ul>
+
+<p>一行正文：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>const tempVal = '1a&lt;&gt;&amp;';
+console.log(tempVal, '打印值');
+* 1. -（md 语法在代码块中失效）
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="6-水平线">6. 水平线</h3>
+<p>在 md 中插入一条水平线：单行填入<code class="language-plaintext highlighter-rouge">---</code>或<code class="language-plaintext highlighter-rouge">***</code>（三个以上连字符或星号）就会在 HTML 中生成一个<code class="language-plaintext highlighter-rouge">&lt;hr /&gt;</code>，常用作分割线<sup id="fnref:divider" role="doc-noteref"><a href="#fn:divider" class="footnote" rel="footnote">1</a></sup>。</p>
+
+<hr />
+
+<h2 id="二内联元素">二、内联元素</h2>
+
+<h3 id="1-链接">1. 链接</h3>
+<p>在 md 中，插入链接有两种形式：内联、引用。</p>
+
+<ul>
+  <li>内联链接只需要在链接文本后面放上Url链接即可，还可以放一个可选的链接标题，如：
+这是一个内联<a href="http://baidu.com" title="title">链接</a>。</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-md" data-lang="md">这是一个内联<span class="p">[</span><span class="nv">链接</span><span class="p">](</span><span class="sx">http://baidu.com</span> <span class="nn">"title"</span><span class="p">)</span>。</code></pre></figure>
+
+<ul>
+  <li>如果是引用相同服务器下的本地资源，还可以用相对路径，如： <a href="/about">关于我</a>。</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-md" data-lang="md"><span class="p">[</span><span class="nv">关于我</span><span class="p">](</span><span class="sx">/about</span><span class="p">)</span>。
+<span class="gh">#=&gt; 注意：内联和引用链接都可以使用相对路径；</span></code></pre></figure>
+
+<ul>
+  <li>引用链接是在链接文本的后面放上一个链接变量名称，可以在文件任意位置（一般跟在引用位置之后）定义一个链接变量名称作为Url链接，如：
+这是一个引用<a href="http://baidu.com" title="title">链接</a>。</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-md" data-lang="md">这是一个引用<span class="p">[</span><span class="nv">链接</span><span class="p">][</span><span class="ss">link temp</span><span class="p">]</span>。
+<span class="p">[</span><span class="ss">link temp</span><span class="p">]:</span> <span class="sx">http://baidu.com</span> <span class="nn">"title"</span>
+<span class="gh">#=&gt; 注意： 其中，URL 可以用尖括号包围，标题可以用双引号、圆括号包围。</span>
+<span class="gh">#=&gt; 链接变量名称可以包含字母、数字、空格和标点符号，不区分大小写。</span></code></pre></figure>
+
+<ul>
+  <li>引用链接支持更简便的用法，即省略链接变量名称，将链接文本作为链接变量名称。如：
+这是一个省略了链接变量名称的<a href="http://baidu.com">链接</a>。</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-md" data-lang="md">这是一个省略了链接变量名称的<span class="p">[</span><span class="nv">链接</span><span class="p">][]</span>。
+<span class="p">[</span><span class="ss">链接</span><span class="p">]:</span> <span class="sx">http://baidu.com</span></code></pre></figure>
+
+<hr />
+
+<h3 id="2-强调">2. 强调</h3>
+<ul>
+  <li>在 md 中，被<code class="language-plaintext highlighter-rouge">*</code>或<code class="language-plaintext highlighter-rouge">_</code>符号包裹的文本将被<code class="language-plaintext highlighter-rouge">&lt;em&gt;</code>标签包裹，展示为<em>斜体</em>，被<code class="language-plaintext highlighter-rouge">**</code>或<code class="language-plaintext highlighter-rouge">__</code>符号包裹的文本将被<code class="language-plaintext highlighter-rouge">&lt;strong&gt;</code>标签包裹，展示为<strong>粗体</strong>。如：</li>
+</ul>
+
+<p>单个符号包裹展示的是<em>斜体</em>，两个符号包裹的是<strong>粗体</strong>。</p>
+
+<figure class="highlight"><pre><code class="language-md" data-lang="md">单个符号包裹展示的是<span class="ge">*斜体*</span>，两个符号包裹的是<span class="gs">**粗体**</span>。</code></pre></figure>
+
+<ul>
+  <li>以防在无意中触发强调，可以在<code class="language-plaintext highlighter-rouge">*</code>或<code class="language-plaintext highlighter-rouge">_</code>前添加转义符号：<code class="language-plaintext highlighter-rouge">\*</code>，如：</li>
+</ul>
+
+<p>正常展示文本中的*强调*号。</p>
+
+<figure class="highlight"><pre><code class="language-md" data-lang="md">正常展示文本中的<span class="se">\*</span>强调<span class="se">\*</span>号。</code></pre></figure>
+
+<hr />
+
+<h3 id="3-代码">3. 代码</h3>
+
+<ul>
+  <li>在 md 中展示代码片段，需要使用反引号<code class="language-plaintext highlighter-rouge">`</code>，不同于代码块，代码片段只是在普通段落中标识出代码，被反引号包裹的内容将被<code class="language-plaintext highlighter-rouge">&lt;code&gt;</code>标签包裹，如：</li>
+</ul>
+
+<p>这是一个<code class="language-plaintext highlighter-rouge">代码标识</code>。</p>
+
+<figure class="highlight"><pre><code class="language-md" data-lang="md">这是一个<span class="sb">`代码标识`</span>。</code></pre></figure>
+
+<ul>
+  <li>要在代码片段中包含字面量的反引号，可以使用多个反引号包裹：</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">代码片段中展示`（反引号字面量）。</code></p>
+
+<figure class="highlight"><pre><code class="language-md" data-lang="md"><span class="sb">``代码片段中展示`（反引号字面量）。``</span></code></pre></figure>
+
+<ul>
+  <li>包含代码片段的反引号可以包含空格（起始标记后一个，结束标记前一个），所以如果想在代码片段的首尾展示反引号字面量，可以用一个空格将反引号隔开。如：</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">`代码片段的首尾展示反引号字面量`</code></p>
+
+<figure class="highlight"><pre><code class="language-md" data-lang="md"><span class="sb">`` `代码片段的首尾展示反引号字面量` ``</span></code></pre></figure>
+
+<hr />
+
+<h3 id="4-图片">4. 图片</h3>
+
+<p>在 md 中，图片的插入方式与链接类似，同样支持两种形式：内联、引用。（使用 md 语法插入的图片无法指定尺寸，如果需要指定尺寸，可以使用<code class="language-plaintext highlighter-rouge">&lt;img&gt;</code>标签。）</p>
+
+<ul>
+  <li>内联图片语法如下：</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-md" data-lang="md"><span class="p">![</span><span class="nv">alt</span><span class="p">](</span><span class="sx">/images/lang.jpg</span> <span class="nn">"title"</span><span class="p">)</span>
+<span class="gh">#=&gt; 其中，[]包含了图片的alt属性，圆括号里包含了图片链接或相对路径，跟随一个空格之后可以选择填入img的title（title可省略）。</span></code></pre></figure>
+
+<ul>
+  <li>引用图片语法如下：</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-md" data-lang="md"><span class="p">![</span><span class="nv">alt</span><span class="p">][</span><span class="ss">yinyongImg id</span><span class="p">]</span>
+
+<span class="p">[</span><span class="ss">yinyongImg id</span><span class="p">]:</span> <span class="sx">/images/lang.jpg</span> <span class="nn">"title"</span>
+<span class="gh">#=&gt; 注意： 1. 引用图片的变量名称命名规则、定义位置与引用链接一致；2. 引用图片同样支持省略变量名称的写法。</span></code></pre></figure>
+
+<hr />
+
+<h2 id="三其他">三、其他</h2>
+<h3 id="1-自动链接">1. 自动链接</h3>
+<p>md 中插入链接的方式已经在上文中介绍过，除此之外，md 还支持一种自动创建链接的形式：</p>
+
+<ul>
+  <li>使用尖括号将Url或邮箱地址包围，md 就会自动创建以此文本为链接的<code class="language-plaintext highlighter-rouge">a</code>标签。</li>
+</ul>
+
+<p><a href="http://example.com/">http://example.com/</a></p>
+
+<p><a href="mailto:address@example.com">address@example.com</a></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;http://example.com/&gt;
+&lt;address@example.com&gt;
+</code></pre></div></div>
+
+<hr />
+<h3 id="2-反斜杠转义">2. 反斜杠转义</h3>
+<p>在 md 中，可以使用反斜杠将 md 语法符号转义为字面量。如上文中提到的：</p>
+
+<p>以防在无意中触发强调，可以在<code class="language-plaintext highlighter-rouge">*</code>或<code class="language-plaintext highlighter-rouge">_</code>前添加转义符号：<code class="language-plaintext highlighter-rouge">\*</code>。</p>
+
+<p>md 为以下字符提供反斜杠语法：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>\   反斜杠
+`   反引号
+*   星号
+_   下划线
+{}  花括号
+[]  中括号
+()  圆括号
+#   井号
++   加号
+-   减号（连字符）
+.   点
+!   感叹号
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="3-表格">3. 表格</h3>
+
+<ul>
+  <li>md 中插入表格的语法如下：</li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">水果名称</th>
+      <th style="text-align: right">价格（元/500克）</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">苹果</td>
+      <td style="text-align: right">3.2</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">香蕉</td>
+      <td style="text-align: right">4.5</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>|水果名称|价格（元/500克）|
+|:-------:|-----:|
+|苹果|3.2|
+|香蕉|4.5|
+#=&gt; 注意：第二行表示的是对齐方式，冒号（:）写在左边表示左对齐，写在右边表示右对齐，写在两边表示居中对齐。
+</code></pre></div></div>
+
+<hr />
+<h3 id="4-脚注">4. 脚注</h3>
+
+<ul>
+  <li>在右上角添加一个脚注标记<sup id="fnref:zhushi2" role="doc-noteref"><a href="#fn:zhushi2" class="footnote" rel="footnote">2</a></sup>，点击后会跳转至页尾相应位置展示详细注释。</li>
+</ul>
+
+<hr />
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:divider" role="doc-endnote">
+      <p>分割线：本文中每个段落之间的分割线都是使用<code class="language-plaintext highlighter-rouge">---</code>插入的。 <a href="#fnref:divider" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:zhushi2" role="doc-endnote">
+      <p>脚注标记：点击注释右上角的返回符号，则会回到标记处。 <a href="#fnref:zhushi2" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</div>
+
+      <!-- 分享 -->
+      <!-- <div class="post__share">
+        <span class="share__title">Share this article:</span>
+        <ul class="share__list list-reset">
+          <li class="share__item">
+            <a class="share__facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/2020/12/24/Markdown-%E6%A6%82%E8%BF%B0/"
+              onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+              title="Share on Facebook" rel="nofollow"><i class="ion ion-logo-facebook"></i></a>
+          </li>
+
+          <li class="share__item">
+            <a class="share__twitter" href="https://twitter.com/intent/tweet?text=Markdown%20%E6%A6%82%E8%BF%B0&url=http://localhost:4000/2020/12/24/Markdown-%E6%A6%82%E8%BF%B0/"
+              onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+              title="Share on Twitter" rel="nofollow"><i class="ion ion-logo-twitter"></i></a>
+          </li>
+
+          <li class="share__item">
+            <a class="share__linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/2020/12/24/Markdown-%E6%A6%82%E8%BF%B0/&title=Markdown%20%E6%A6%82%E8%BF%B0&summary=&source="
+              onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn" rel="nofollow"><i class="ion ion-logo-linkedin"></i></a>
+          </li>
+
+          <li class="share__item">
+            <a class="share__pinterest" href="http://pinterest.com/pin/create/button/?url=http://localhost:4000/2020/12/24/Markdown-%E6%A6%82%E8%BF%B0/&amp;media=http://localhost:4000/images/markdown.jpg&amp;description=Markdown%20%E6%A6%82%E8%BF%B0"
+              onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;" title="Share on Pinterest"
+              rel="nofollow"><i class="ion ion-logo-pinterest"></i></a>
+          </li>
+        </ul>
+      </div> -->
+    </article>
+    <!-- end post -->
+  </div>
+</div>
+<!-- 上一篇 下一篇 -->
+<div class="container" style="display: none;">
+  <div class="post__navigation">
+    
+    <div class="prev">
+      <a
+        class="post__nav__image"
+        href="/2020/12/23/%E5%88%9D%E8%AF%86-Jekyll/"
+        style="background-image: url(/images/)"
+      ></a>
+      <h2 class="post__nav__title">
+        <i class="ion ion-md-arrow-back"></i>
+        <a href="/2020/12/23/%E5%88%9D%E8%AF%86-Jekyll/"
+          >初识 Jekyll</a
+        >
+      </h2>
+      <p class="prev__excerpt">
+         1. a 标签
+
+这是一个 a 标签;
+
+[这是一个 a 标签][link-a];
+[link-a]: https://baidu.com (自定义链接变量必须放在文件尾部)
+
+
+
+2. 变量和语句
+
+
+  
+  ... 
+      </p>
+    </div>
+     
+  </div>
+
+   <!-- begin comments -->
+<div class="comments">
+  <div id="disqus_thread"></div>
+  <script>
+    (function () {
+      var d = document, s = d.createElement('script');
+      s.src = '//mr-alang.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the
+    <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+  </noscript>
+</div>
+<!-- end comments --> 
+</div>
+
+  </main>
+  <!-- end content -->
+
+  <div class="top ion ion-ios-arrow-up" title="Top"></div>
+
+  <!-- begin search -->
+<div class="search">
+  <div class="container">
+    <div class="row">
+      <div class="col col-12">
+        <div class="search__box">
+          <div class="search__group">
+            <div class="search__close">
+              <i class="ion ion-ios-close-circle-outline"></i>
+            </div>
+            <label for="js-search-input" class="screen-reader-text">搜索</label>
+            <input type="text" id="js-search-input" class="search__text" autocomplete="off" placeholder="搜索标题或标签类型">
+          </div>
+          <ul id="js-results-container" class="search-results-list"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end search -->
+
+  <!-- begin footer -->
+<footer class="footer">
+  <div class="container">
+
+     
+
+    
+    
+    
+
+    <!-- <div class="contact">
+  <ul class="contact__list list-reset">
+    
+      <li><a href="https://twitter.com/"><i class="ion ion-logo-twitter"></i></a></li>
+    
+
+    
+      <li><a href="https://facebook.com/"><i class="ion ion-logo-facebook"></i></a></li>
+    
+  
+    
+      <li><a href="https://dribbble.com/"><i class="ion ion-logo-dribbble"></i></a></li>
+    
+  
+    
+      <li><a href="https://instagram.com/"><i class="ion ion-logo-instagram"></i></a></li>
+    
+  
+    
+      <li><a href="https://pinterest.com/"><i class="ion ion-logo-pinterest"></i></a></li>
+    
+  </ul>
+</div> -->
+
+    <div class="copyright">Copyright &copy; 2024 <a href="/">是阿浪呀</a></div>
+</div>
+</footer>
+<!-- end footer -->
+
+
+  <script src="/js/vendors/jquery-3.3.1.min.js"></script>
+<script src="/js/vendors/simple-jekyll-search.min.js"></script>
+<script>
+  SimpleJekyllSearch({
+    searchInput: document.getElementById("js-search-input"),
+    resultsContainer: document.getElementById("js-results-container"),
+    json: "/search.json",
+    searchResultTemplate: '<li class="search-results__item"><a class="search-results__link" href="{url}">{title}</a><br> <span class="search-results__date">{date}</span></li>',
+    noResultsText: '<li class="no-results">无匹配内容</li>'
+  });
+</script>
+<script src="/js/vendors/transition.js"></script>
+<script src="/js/vendors/zoom.min.js"></script>
+<script src="/js/vendors/instafeed.min.js"></script>
+<script src="/js/vendors/jquery.fitvids.js"></script>
+<script src="/js/common.js"></script>
+</body>
+
+</html>
