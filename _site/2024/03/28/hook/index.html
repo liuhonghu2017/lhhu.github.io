@@ -6,10 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>鸿鹄的博客</title>
+  <title>hook</title>
   <meta name='description' content='所思有所记'>
 
-  <link rel="canonical" href="http://localhost:4000/tag/jekyll/">
+  <link rel="canonical" href="http://localhost:4000/2024/03/28/hook/">
   <link rel="alternate" type="application/rss+xml" title="" href="/feed.xml">
 
   <!-- Fonts -->
@@ -127,74 +127,382 @@
 
   <!-- begin content -->
   <main class="content" aria-label="Content">
-    <div class="arhive-head">
-  <div class="container">
-    <h1 class="archive-title">标签: <span>Jekyll</span></h1>
-  </div>
-</div>
+    <div class="container">
+  <div class="post-title-box">
+    <div class="row">
+      <div class="col col-10 push-2 col-11 push-t-1 col-m-12 push-m-0">
+        <h1 class="post-title">hook</h1>
 
-
-
-  
-<!-- begin article -->
-<div class="article">
-  <div class="container">
-
-    <div class="article__wrapper">
-
-        
-          
-        
-
-        <div class="article__content article-without-image">
-          <div class="article-tags">
-          
-            <div class="article-tags__box">
-              
-                <a href="/tag/Jekyll" class="article__tag">Jekyll</a>
-              
-            </div>
-          
-          </div>
-      
-          <h2 class="article__title">
-            <a href="/2020/12/23/%E5%88%9D%E8%AF%86-Jekyll/">初识 Jekyll</a>
-          </h2>
-      
-          <p class="article__excerpt">1. a 标签
-
-这是一个 a 标签;
-
-[这是一个 a 标签][link-a];
-[link-a]: https://baidu.com (自定义链接变量必须放在文件尾部)
-
-
-
-2. 变量和语句
-
-
-  
-    Markdown 文件中的三种定义变量方式: { {变量} } { %语句% } [链接];
-  
-  
-    Markdown 文件允许在 Y...</p>
-          
-          <div class="article__footer">
-            <div class="article__meta">
-              <span class="article__date"><time datetime="2020-12-23T18:50:06+08:00">2020.12.23 18:50</time></span>
-            </div>
-
-            <a href="/2020/12/23/%E5%88%9D%E8%AF%86-Jekyll/" class="read-more">阅读全文 <i class="ion ion-ios-arrow-forward"></i></a>
+        <div class="post__info">
+          <div class="post__author">
+            <span>By</span>
+            <a href="/about/" class="author-name"
+              >鸿鹄</a
+            >
           </div>
 
+          
+          <div class="post__tags">
+            
+            <a href="/tag/js" class="post__tags-tag"
+              >js</a
+            >
+            
+          </div>
+          
+
+          <span class="post__date">
+            <time datetime="2024-03-28T12:26:00+08:00"
+              >2024.03.28 12:26</time
+            >
+          </span>
         </div>
-
       </div>
-      
+    </div>
+  </div>
+
+     
+</div>
+
+<div class="container">
+  <div class="row">
+    <!-- begin post -->
+    <article class="post post-no-image col col-8 col-t-10 col-m-12">
+      <div class="post__content"><h1 id="hook">hook</h1>
+
+<h2 id="优缺点">优缺点</h2>
+
+<ul>
+  <li>优点:
+    <ol>
+      <li>写法更加简洁;</li>
+      <li>更容易拆分组件, 复用代码;</li>
+      <li>不用再去考虑 this 的指向问题;</li>
+    </ol>
+  </li>
+  <li>缺点:
+    <ol>
+      <li>useEffect 是响应式的, 当某个依赖项变化时它才会被调用。你必须去理解它的调用时机、调用时的状态老旧问题, 这不直观, 也难以维护。有时, useEffect 会发生比你预期更多的调用次数
+解决方案: 不要在 useEffect 里面写太多的依赖项, 划分这些依赖项成多个单一功能的 useEffect。其实这点是遵循了软件设计的“单一职责模式”</li>
+      <li>状态不同步; 解决方案: 手动传参 或使用 useRef</li>
+    </ol>
+  </li>
+</ul>
+
+<h2 id="hook-为什么不能在-if-判断和循环语句中">hook 为什么不能在 if 判断和循环语句中？</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>类组件的状态是以对象形式储存的, 每个状态都有一个key和value相对应,但是在函数式组件中, useState方法只接受了状态的初始值作为参数, 并没有key, 所以, 函数式组件的状态不能以对象的形式存储, 只能以链表的形式存储,需要保持顺序, 这样才能使每次渲染的序列对得上.而函数式组件每次渲染都会重新生成一个状态序列, 如果在 if 里调用, 就可能导致某次渲染的时候状态序列有缺失, 从而出现异常。
+</code></pre></div></div>
+
+<h2 id="usestate">useState</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>useState 可以让我们在函数组件中使用 state 状态
+</code></pre></div></div>
+
+<p>与类组件中 state 的区别:</p>
+
+<ul>
+  <li>声明：state 直接在 useState 中声明, 类组件的 state 在 constructor 构造函数中设置</li>
+  <li>读取：state 可以直接使用变量, 类组件需要 this.state.xx 获取</li>
+  <li>更新：setXx, 类组件 this.setState({xx: ..})
+与类组件中 state 相比优点: 更加简洁, 减少了 this 指向不明确的情况</li>
+</ul>
+
+<p>useState 中的 setState 函数, 可以接受一个回调函数作为参数, 这个回调函数会接受当前 state 的值作为参数, 然后返回一个新的 state 值。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// useState 闭包陷阱</span>
+<span class="kd">function</span> <span class="nf">Counter</span><span class="p">()</span> <span class="p">{</span>
+	<span class="kd">const</span> <span class="p">[</span><span class="nx">count</span><span class="p">,</span> <span class="nx">setCount</span><span class="p">]</span> <span class="o">=</span> <span class="nf">useState</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+	<span class="kd">const</span> <span class="nx">handleClick</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+		<span class="c1">// handleClick 函数内可以访问 Counter 函数中定义的 count 和 setCount, handleClick 函数形成了一个闭包, 而闭包会缓存 count 的值</span>
+		<span class="c1">// 就导致每次 setTimeout 中拿到的 count 都是缓存过的值, 不是最新的值</span>
+		<span class="c1">// 解决方案是在 setCount 中传入一个回调函数, 回调函数中的 currentCount 变量是函数作用域内的局部变量, 不会受到外部变量的影响, 就可以拿到最新的 count</span>
+		<span class="nf">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+			<span class="nf">setCount</span><span class="p">(</span><span class="nx">count</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+			<span class="c1">// setState 函数, 可以接受一个回调函数作为参数</span>
+			<span class="nf">setCount</span><span class="p">((</span><span class="nx">currentCount</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">currentCount</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+		<span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
+	<span class="p">};</span>
+	<span class="kd">const</span> <span class="nx">handleReset</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+		<span class="nf">setCount</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+	<span class="p">};</span>
+	<span class="k">return </span><span class="p">(</span>
+		<span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+			<span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">Count</span><span class="p">:</span> <span class="p">{</span><span class="nx">count</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/p</span><span class="err">&gt;
+</span>			<span class="o">&lt;</span><span class="nx">button</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="nx">handleClick</span><span class="p">}</span><span class="o">&gt;</span><span class="nx">Increment</span><span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>		<span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>	<span class="p">);</span>
+<span class="p">}</span>
+<span class="c1">// useEffect 也存在闭包陷阱, 可以通过传入依赖项解决</span>
+</code></pre></div></div>
+
+<h2 id="useeffect">useEffect</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>useEffect 可以让我们在函数组件中进行一些带有副作用的操作, 可以实现类组件中生命周期的功能
+componentDidMount, componentDidUpdate, componentWillUnMount
+可以在函数中返回一个函数,在其中清除副作用;
+</code></pre></div></div>
+
+<p>特性: 依赖项变化时才执行, 好处是可以减少不必要的代码开销, 坏处是不易管理依赖项, 建议遵循单一职责原则, 以职责划分多个 useEffect 函数</p>
+
+<h2 id="usecontext">useContext</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>组件通信(非关系组件的通信,祥见 react.md), 用来处理多层级传递数据的方式, 减少组件嵌套
+</code></pre></div></div>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 使用 createContext 建立一个 context, 并导出</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">createContext</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">react</span><span class="dl">"</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">MyContext</span> <span class="o">=</span> <span class="nf">createContext</span><span class="p">();</span>
+<span class="k">export</span> <span class="k">default</span> <span class="nx">MyContext</span><span class="p">;</span>
+
+<span class="c1">// 传递数据组件:</span>
+<span class="k">import</span> <span class="nx">MyContext</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./MyContext</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="k">return </span><span class="p">(</span>
+    <span class="c1">// 传递数据组件里使用 Provider 包裹着子组件, 并且在用value属性来传递数据</span>
+    <span class="p">&lt;</span><span class="nc">MyContext</span><span class="p">.</span><span class="nc">Provider</span> <span class="na">value</span><span class="p">=</span><span class="si">{</span><span class="nx">value</span><span class="si">}</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nc">B</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;/</span><span class="nc">MyContext</span><span class="p">.</span><span class="nc">Provider</span><span class="p">&gt;</span>
+<span class="p">);</span>
+
+<span class="c1">// 获取数据组件:</span>
+<span class="c1">// 接受数据的组件导入定义的 context 使用 Consumer 来接收</span>
+<span class="k">return </span><span class="p">(</span>
+<span class="p">&lt;&gt;</span>
+   <span class="p">&lt;</span><span class="nc">MyContext</span><span class="p">.</span><span class="nc">Consumer</span><span class="p">&gt;</span>
+     <span class="si">{</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span><span class="si">{</span><span class="nx">value</span><span class="si">}</span><span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span><span class="si">}</span>
+   <span class="p">&lt;/</span><span class="nc">MyContext</span><span class="p">.</span><span class="nc">Consumer</span><span class="p">&gt;</span>
+    <span class="si">{</span><span class="cm">/* 如果是多个 context, 需要嵌套使用 */</span><span class="si">}</span>
+    <span class="p">&lt;</span><span class="nc">MyContext</span><span class="p">.</span><span class="nc">Consumer</span><span class="p">&gt;</span>
+     <span class="si">{</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">(</span>
+<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span><span class="o">&lt;&gt;</span>
+<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span><span class="o">&lt;</span><span class="nx">span</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">value</span><span class="p">}&lt;</span><span class="err">/</span><span class="na">span</span><span class="p">&gt;</span>
+         <span class="p">&lt;</span><span class="nc">MyContext2</span><span class="p">.</span><span class="nc">Consumer</span><span class="p">&gt;</span>
+           <span class="si">{</span><span class="p">(</span><span class="nx">value2</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span><span class="si">{</span><span class="nx">value2</span><span class="si">}</span><span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span><span class="si">}</span>
+         <span class="p">&lt;/</span><span class="nc">MyContext2</span><span class="p">.</span><span class="nc">Consumer</span><span class="p">&gt;</span>
+       <span class="p">&lt;/&gt;</span>
+<span class="err"> </span> <span class="err"> </span>  <span class="p">)</span><span class="si">}</span>
+   <span class="p">&lt;/</span><span class="nc">MyContext</span><span class="p">.</span><span class="nc">Consumer</span><span class="p">&gt;</span>
+<span class="p">&lt;/&gt;</span>
+<span class="p">);</span>
+<span class="k">export</span> <span class="k">default</span> <span class="nx">B</span><span class="p">;</span>
+
+<span class="c1">// 为避免嵌套使用, 可以通过 useContext 来重新获取值</span>
+<span class="kd">const</span> <span class="nx">value</span> <span class="o">=</span> <span class="nf">useContext</span><span class="p">(</span><span class="nx">MyContext</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">value2</span> <span class="o">=</span> <span class="nf">useContext</span><span class="p">(</span><span class="nx">MyContext2</span><span class="p">);</span>
+<span class="k">return </span><span class="p">(</span>
+    <span class="p">&lt;&gt;</span>
+        <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span><span class="si">{</span><span class="nx">value</span><span class="si">}</span><span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span><span class="si">{</span><span class="nx">value2</span><span class="si">}</span><span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+    <span class="p">&lt;/&gt;</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<h2 id="useref">useRef</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. useRef 可以挂载在原生元素上来获取其DOM对象本身;
+</code></pre></div></div>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">inputRef</span> <span class="o">=</span> <span class="nf">useRef</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+<span class="kd">function</span> <span class="nf">handleClick</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">inputRef</span><span class="p">.</span><span class="nx">current</span><span class="p">.</span><span class="nf">focus</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="p">&lt;</span><span class="nt">input</span> <span class="na">ref</span><span class="p">=</span><span class="si">{</span><span class="nx">inputRef</span><span class="si">}</span> <span class="p">/&gt;;</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2. 可用于设置一个可变的引用值, 不随组件渲变化。与 useState 不同, useRef 返回的引用对象在组件重新渲染时保持不变, 设置引用值也不会触发组件的重新渲染。
+</code></pre></div></div>
+
+<h2 id="usememo-和-reactmemo-的区别">useMemo 和 React.memo 的区别</h2>
+
+<ol>
+  <li>
+    <p>useMemo <strong>缓存计算结果</strong></p>
+
+    <ul>
+      <li>作用: 缓存计算结果, 避免在每次渲染时都进行复杂的计算和重新创建对象</li>
+      <li>使用场景: 消耗量大的运算、递归之类的</li>
+    </ul>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">res</span> <span class="o">=</span> <span class="nf">useMemo</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+	<span class="k">return</span> <span class="nx">依赖项相关计算</span><span class="p">;</span>
+<span class="p">},</span> <span class="p">[</span><span class="nx">依赖项</span><span class="p">]);</span>
+</code></pre></div>    </div>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- useMemo 也可以缓存组件
+</code></pre></div>    </div>
+
+    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">SlowComponentMemo</span> <span class="o">=</span> <span class="nf">memo</span><span class="p">(</span><span class="nx">SlowComponent</span><span class="p">);</span>
+
+<span class="kd">function</span> <span class="nf">Component</span><span class="p">()</span> <span class="p">{</span>
+	<span class="k">return</span> <span class="p">&lt;</span><span class="nc">SlowComponentMemo</span> <span class="p">/&gt;;</span>
+<span class="p">}</span>
+
+<span class="c1">// 或者</span>
+<span class="kd">function</span> <span class="nf">Component</span><span class="p">()</span> <span class="p">{</span>
+	<span class="kd">const</span> <span class="nx">slowComponentNode</span> <span class="o">=</span> <span class="nf">useMemo</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+		<span class="k">return</span> <span class="p">&lt;</span><span class="nc">SlowComponent</span> <span class="p">/&gt;;</span>
+	<span class="p">},</span> <span class="p">[]);</span>
+	<span class="k">return</span> <span class="nx">slowComponentNode</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>React.memo <strong>缓存组件</strong>
+react 组件的默认渲染机制是, 只要父组件重新渲染, 子组件会跟着渲染</p>
+
+    <ul>
+      <li>作用: 用 <strong>memo</strong> 进行缓存, 允许组件在 <strong>props</strong> 没有改变的情况下跳过渲染</li>
+      <li>原理: 使用 <strong>memo</strong> 缓存组件之后, React 会对此组件的每一个 props 使用 <strong>Object.is()</strong> 比较新值老值, 所有 props 都返回 true 说明没有 props 更新, 则不会重新渲染</li>
+    </ul>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">MemoComponent</span> <span class="o">=</span> <span class="nf">memo</span><span class="p">(</span><span class="nx">fucntion</span> <span class="nc">SomeComponent</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">{</span>
+<span class="c1">// …</span>
+<span class="p">})</span>
+</code></pre></div>    </div>
+
+    <ul>
+      <li>由于 <strong>memo</strong> 比较 props 新老数值的原理是利用 <strong>Object.is()</strong>,就会出现一个问题:
+Object.is() 在判断复杂类型时, 会根据引用进行判断,而复杂类型的数据, 在函数每次执行时都会生成一个新的引用, 所以相同的数组会被判断成 false, 也就是说 props 没有变化的情况还是触发了组件的更新</li>
+      <li>解决方案:
+        <ol>
+          <li>对象或数组 通过 <strong>useMemo</strong> 缓存 –&gt;
+将对象或数组用 <strong>useMemo</strong> 计算属性来缓存(依赖项为<strong>[]</strong>), 这样每次父组件更新时复杂类型的数据的依赖值没变, 则会直接使用缓存, 不会重新生成新的引用</li>
+          <li>函数 通过 <strong>useCallback</strong> 缓存</li>
+        </ol>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="usecallback-缓存函数">useCallback 缓存函数</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>useCallback 可以缓存函数, 避免每次渲染时重新创建函数;
+</code></pre></div></div>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">handleClick</span> <span class="o">=</span> <span class="nf">useCallback</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+	<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">依赖项 count 变化</span><span class="dl">"</span><span class="p">);</span>
+<span class="p">},</span> <span class="p">[</span><span class="nx">count</span><span class="p">]);</span>
+</code></pre></div></div>
+
+<h2 id="useselector">useSelector</h2>
+
+<p>在组件多次重新渲染时, 缓存函数</p>
+
+<h2 id="usereducer">useReducer</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>跟 react-redux 的使用方式一样, 算是提供一个简易的 Redux 版本, 用来管理相对复杂的状态数据
+</code></pre></div></div>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 定义 reducer 函数</span>
+<span class="kd">const</span> <span class="nx">reducer</span> <span class="o">=</span> <span class="p">(</span><span class="nx">state</span><span class="p">,</span> <span class="nx">action</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+	<span class="c1">// 根据不同的 action.type 执行不同的操作并返回新的 state</span>
+	<span class="k">switch </span><span class="p">(</span><span class="nx">action</span><span class="p">.</span><span class="nx">type</span><span class="p">)</span> <span class="p">{</span>
+		<span class="k">case</span> <span class="dl">"</span><span class="s2">INC</span><span class="dl">"</span><span class="p">:</span>
+			<span class="k">return</span> <span class="nx">state</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+		<span class="k">case</span> <span class="dl">"</span><span class="s2">DEC</span><span class="dl">"</span><span class="p">:</span>
+			<span class="k">return</span> <span class="nx">state</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+		<span class="nl">default</span><span class="p">:</span>
+			<span class="k">return</span> <span class="nx">state</span><span class="p">;</span>
+	<span class="p">}</span>
+<span class="p">};</span>
+<span class="c1">// 在组件中调用 useReducer ,传入 reducer 函数和状态初始值</span>
+<span class="kd">const</span> <span class="p">[</span><span class="nx">state</span><span class="p">,</span> <span class="nx">dispatch</span><span class="p">]</span> <span class="o">=</span> <span class="nf">useReducer</span><span class="p">(</span><span class="nx">reducer</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+<span class="c1">// 通过 dispatch 分派一个 action 对象</span>
+<span class="nf">dispatch</span><span class="p">({</span> <span class="na">type</span><span class="p">:</span> <span class="dl">"</span><span class="s2">INC</span><span class="dl">"</span> <span class="p">});</span>
+</code></pre></div></div>
+
+<h2 id="ahooks-库">ahooks 库</h2>
+
+<ol>
+  <li>useRequest 接口</li>
+  <li>useControllableValue 父子组件数据共享</li>
+  <li>useLocalStorageState 简易数据流</li>
+</ol>
+</div>
+
+      <!-- 分享 -->
+      <!-- <div class="post__share">
+        <span class="share__title">Share this article:</span>
+        <ul class="share__list list-reset">
+          <li class="share__item">
+            <a class="share__facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/2024/03/28/hook/"
+              onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+              title="Share on Facebook" rel="nofollow"><i class="ion ion-logo-facebook"></i></a>
+          </li>
+
+          <li class="share__item">
+            <a class="share__twitter" href="https://twitter.com/intent/tweet?text=hook&url=http://localhost:4000/2024/03/28/hook/"
+              onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+              title="Share on Twitter" rel="nofollow"><i class="ion ion-logo-twitter"></i></a>
+          </li>
+
+          <li class="share__item">
+            <a class="share__linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/2024/03/28/hook/&title=hook&summary=&source="
+              onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn" rel="nofollow"><i class="ion ion-logo-linkedin"></i></a>
+          </li>
+
+          <li class="share__item">
+            <a class="share__pinterest" href="http://pinterest.com/pin/create/button/?url=http://localhost:4000/2024/03/28/hook/&amp;media=http://localhost:4000/images/&amp;description=hook"
+              onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;" title="Share on Pinterest"
+              rel="nofollow"><i class="ion ion-logo-pinterest"></i></a>
+          </li>
+        </ul>
+      </div> -->
+    </article>
+    <!-- end post -->
   </div>
 </div>
-<!-- end article -->
+<!-- 上一篇 下一篇 -->
+<div class="container" style="display: none;">
+  <div class="post__navigation">
+    
+    <div class="prev">
+      <a
+        class="post__nav__image"
+        href="/2024/03/28/%E7%BB%A7%E6%89%BF/"
+        style="background-image: url(/images/)"
+      ></a>
+      <h2 class="post__nav__title">
+        <i class="ion ion-md-arrow-back"></i>
+        <a href="/2024/03/28/%E7%BB%A7%E6%89%BF/"
+          >继承的六种方式</a
+        >
+      </h2>
+      <p class="prev__excerpt">
+         继承
 
+1. 原型继承
+
+
+  原型链继承主要是利用原型对所有实例共享的特性来实现继承的。该继承方式主要有如下特点:
+
+
+
+  原型在包含有引用类型的数据时, 会被所有的实例对象所共享, 容易造成修改的混乱。
+  ... 
+      </p>
+    </div>
+     
+  </div>
+
+   <!-- begin comments -->
+<div class="comments">
+  <div id="disqus_thread"></div>
+  <script>
+    (function () {
+      var d = document, s = d.createElement('script');
+      s.src = '//mr-alang.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the
+    <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+  </noscript>
+</div>
+<!-- end comments --> 
+</div>
 
   </main>
   <!-- end content -->

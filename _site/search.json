@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "hook",
+      "category" : "",
+      "tags"     : "js",
+      "url"      : "/2024/03/28/hook/",
+      "date"     : "28 Mar, 2024"
+    } ,
+  
+    {
       "title"    : "继承的六种方式",
       "category" : "",
       "tags"     : "JS",
