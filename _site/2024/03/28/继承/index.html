@@ -6,10 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>初识 Jekyll</title>
+  <title>继承的六种方式</title>
   <meta name='description' content='所思有所记'>
 
-  <link rel="canonical" href="http://localhost:4000/2020/12/23/%E5%88%9D%E8%AF%86-Jekyll/">
+  <link rel="canonical" href="http://localhost:4000/2024/03/28/%E7%BB%A7%E6%89%BF/">
   <link rel="alternate" type="application/rss+xml" title="" href="/feed.xml">
 
   <!-- Fonts -->
@@ -127,7 +127,7 @@
   <div class="post-title-box">
     <div class="row">
       <div class="col col-10 push-2 col-11 push-t-1 col-m-12 push-m-0">
-        <h1 class="post-title">初识 Jekyll</h1>
+        <h1 class="post-title">继承的六种方式</h1>
 
         <div class="post__info">
           <div class="post__author">
@@ -140,16 +140,16 @@
           
           <div class="post__tags">
             
-            <a href="/tag/Jekyll" class="post__tags-tag"
-              >Jekyll</a
+            <a href="/tag/JS" class="post__tags-tag"
+              >JS</a
             >
             
           </div>
           
 
           <span class="post__date">
-            <time datetime="2020-12-23T18:50:06+08:00"
-              >2020.12.23 18:50</time
+            <time datetime="2024-03-28T11:06:06+08:00"
+              >2024.03.28 11:06</time
             >
           </span>
         </div>
@@ -164,91 +164,227 @@
   <div class="row">
     <!-- begin post -->
     <article class="post post-no-image col col-8 col-t-10 col-m-12">
-      <div class="post__content"><h3 id="1-a-标签">1. a 标签</h3>
+      <div class="post__content"><h1 id="继承">继承</h1>
 
-<p><a href="https://baidu.com">这是一个 a 标签</a>;</p>
+<h3 id="1-原型继承">1. 原型继承</h3>
 
-<figure class="highlight"><pre><code class="language-md" data-lang="md"><span class="p">[</span><span class="nv">这是一个 a 标签</span><span class="p">][</span><span class="ss">link-a</span><span class="p">]</span>;
-<span class="p">[</span><span class="ss">link-a</span><span class="p">]:</span> <span class="sx">https://baidu.com</span> <span class="nn">(自定义链接变量必须放在文件尾部)</span></code></pre></figure>
-
-<hr />
-
-<h3 id="2-变量和语句">2. 变量和语句</h3>
+<blockquote>
+  <p>原型链继承主要是利用原型对所有实例共享的特性来实现继承的。该继承方式主要有如下特点:</p>
+</blockquote>
 
 <ol>
-  <li>
-    <p>Markdown 文件中的三种定义变量方式: <code class="language-plaintext highlighter-rouge">{ {变量} }</code> <code class="language-plaintext highlighter-rouge">{ %语句% }</code> <code class="language-plaintext highlighter-rouge">[链接]</code>;</p>
-  </li>
-  <li>
-    <p>Markdown 文件允许在 YAML 头信息中自定义页面变量: 如 <code class="language-plaintext highlighter-rouge">page.subtitle: 副标题</code>;</p>
-  </li>
-  <li>
-    <p>Markdown 文件允许使用 for 循环.</p>
-  </li>
+  <li>原型在包含有引用类型的数据时, 会被所有的实例对象所共享, 容易造成修改的混乱。</li>
+  <li>创建子类型的时候不能向超类型传递参数。</li>
+  <li>实例属于子类不属于父类。</li>
 </ol>
-<ul>
-  
-    <li>
-      <a href="/2024/03/28/%E7%BB%A7%E6%89%BF/">继承的六种方式</a>
-    </li>
-  
-    <li>
-      <a href="/2020/12/24/Markdown-%E6%A6%82%E8%BF%B0/">Markdown 概述</a>
-    </li>
-  
-    <li>
-      <a href="/2020/12/23/%E5%88%9D%E8%AF%86-Jekyll/">初识 Jekyll</a>
-    </li>
-  
-</ul>
 
-<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;ul&gt;</span>
-  for post in site.posts(语句要用{ %% }包裹)
-    <span class="nt">&lt;li&gt;</span>
-      <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"{post.url}"</span><span class="nt">&gt;</span>post.title<span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;/li&gt;</span>
-  endfor
-<span class="nt">&lt;/ul&gt;</span></code></pre></figure>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 子类</span>
+<span class="kd">function</span> <span class="nf">Child</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">age</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+	<span class="k">this</span><span class="p">.</span><span class="nx">age</span> <span class="o">=</span> <span class="nx">age</span><span class="p">;</span>
+<span class="p">}</span>
 
-<hr />
+<span class="c1">//原型对象</span>
+<span class="kd">const</span> <span class="nx">Father</span> <span class="o">=</span> <span class="p">{</span>
+	<span class="na">colors</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">red</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">blue</span><span class="dl">"</span><span class="p">],</span>
+<span class="p">};</span>
 
-<h3 id="3-jekyll-数据">3. jekyll 数据</h3>
+<span class="c1">// 原型继承</span>
+<span class="nx">Child</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="nx">Father</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">child</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Child</span><span class="p">(</span><span class="dl">"</span><span class="s2">randy</span><span class="dl">"</span><span class="p">,</span> <span class="mi">26</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="2-构造继承">2. 构造继承</h3>
+
+<blockquote>
+  <p>使用借用构造函数继承这种方式是通过在子类型的函数中调用父类型的构造函数来实现的。该继承方式有如下特点</p>
+</blockquote>
 
 <ol>
-  <li>jekyll 支持从位于_data 的 yaml, json, csv 文件中加载数据</li>
+  <li>构造函数继承解决了不能向父类型传递参数的缺点。</li>
+  <li>但是它存在的一个问题就是无法实现函数方法的复用, 就是父类方法在每个实例里面都会存在, 相较于原型继承浪费了存储空间。</li>
+  <li>并且父类型原型上定义的方法子类型也没有办法访问到。</li>
+  <li>实例属于子类不属于父类。</li>
 </ol>
-<ul>
 
-  <li>
-    <a href="https://baidu.com">
-      百度
-    </a>
-  </li>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 父类</span>
+<span class="kd">function</span> <span class="nf">Father</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">age</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+	<span class="k">this</span><span class="p">.</span><span class="nx">age</span> <span class="o">=</span> <span class="nx">age</span><span class="p">;</span>
+	<span class="k">this</span><span class="p">.</span><span class="nx">fatherColors</span> <span class="o">=</span> <span class="p">[</span><span class="dl">"</span><span class="s2">green</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">yellow</span><span class="dl">"</span><span class="p">];</span>
+<span class="p">}</span>
 
-  <li>
-    <a href="https://zhihu.com">
-      知乎
-    </a>
-  </li>
+<span class="c1">//子类</span>
+<span class="kd">function</span> <span class="nf">Child</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">age</span><span class="p">,</span> <span class="nx">sex</span><span class="p">)</span> <span class="p">{</span>
+	<span class="c1">// 构造继承 可以传参 解决了不能向父类型传递参数的缺点</span>
+	<span class="nx">Father</span><span class="p">.</span><span class="nf">call</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">age</span><span class="p">);</span>
+	<span class="k">this</span><span class="p">.</span><span class="nx">sex</span> <span class="o">=</span> <span class="nx">sex</span><span class="p">;</span>
+<span class="p">}</span>
 
-  <li>
-    <a href="https://douban.com">
-      豆瓣
-    </a>
-  </li>
+<span class="kd">const</span> <span class="nx">child</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Child</span><span class="p">(</span><span class="dl">"</span><span class="s2">randy</span><span class="dl">"</span><span class="p">,</span> <span class="mi">26</span><span class="p">,</span> <span class="dl">"</span><span class="s2">male</span><span class="dl">"</span><span class="p">);</span>
+</code></pre></div></div>
 
-</ul>
+<h3 id="3-组合继承">3. 组合继承</h3>
 
-<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;ul&gt;</span>
-for member in site.data.members
-  <span class="nt">&lt;li&gt;</span>
-    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"member.path"</span><span class="nt">&gt;</span>
-      member.name
-    <span class="nt">&lt;/a&gt;</span>
-  <span class="nt">&lt;/li&gt;</span>
-endfor
-<span class="nt">&lt;/ul&gt;</span></code></pre></figure>
+<blockquote>
+  <p>组合继承是将原型链继承和构造函数继承组合起来使用的一种方式。通过借用构造函数的方式来实现实例属性的继承, 通过将子类型的原型设置为父类的实例来实现原型属性的继承。该继承方式有如下特点</p>
+</blockquote>
 
+<ol>
+  <li>这种方式解决了上面的两种模式单独使用时的问题。能向父类型传递参数, 能获取父类原型上的属性和方法。</li>
+  <li>由于我们是以超类型的实例来作为子类型的原型, 所以调用了两次超类的构造函数。</li>
+  <li>由于原型是父类实例, 所以实例对象的原型中多了很多不必要的属性（实例中有父类的方法和属性, 原型里面还有, 都是重复的）。</li>
+  <li>实例对象既属于父类又属于子类。</li>
+</ol>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 父类</span>
+<span class="kd">function</span> <span class="nf">Father</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">age</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+	<span class="k">this</span><span class="p">.</span><span class="nx">age</span> <span class="o">=</span> <span class="nx">age</span><span class="p">;</span>
+	<span class="k">this</span><span class="p">.</span><span class="nx">fatherColors</span> <span class="o">=</span> <span class="p">[</span><span class="dl">"</span><span class="s2">green</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">yellow</span><span class="dl">"</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="c1">//子类</span>
+<span class="kd">function</span> <span class="nf">Child</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">age</span><span class="p">,</span> <span class="nx">sex</span><span class="p">)</span> <span class="p">{</span>
+	<span class="c1">// 构造继承</span>
+	<span class="nx">Father</span><span class="p">.</span><span class="nf">call</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">age</span><span class="p">);</span>
+	<span class="k">this</span><span class="p">.</span><span class="nx">colors</span> <span class="o">=</span> <span class="p">[</span><span class="dl">"</span><span class="s2">red</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">blue</span><span class="dl">"</span><span class="p">];</span>
+	<span class="k">this</span><span class="p">.</span><span class="nx">sex</span> <span class="o">=</span> <span class="nx">sex</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// 原型继承</span>
+<span class="nx">Child</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Father</span><span class="p">();</span>
+<span class="nx">Child</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="kd">constructor</span> <span class="o">=</span> <span class="nx">Child</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">child</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Child</span><span class="p">(</span><span class="dl">"</span><span class="s2">randy</span><span class="dl">"</span><span class="p">,</span> <span class="mi">26</span><span class="p">,</span> <span class="dl">"</span><span class="s2">male</span><span class="dl">"</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="4-寄生式继承">4. 寄生式继承</h3>
+
+<blockquote>
+  <p>寄生式继承的思路是创建一个用于封装继承过程的函数, 通过传入一个对象, 然后创建一个新对象, 该对象的原型是传入的对象。然后对该新对象进行扩展, 最后返回这个新对象。这个扩展的过程就可以理解是一种继承。该继承方式有如下特点</p>
+</blockquote>
+
+<ol>
+  <li>这种继承的优点就是对一个简单对象实现继承。</li>
+  <li>没有办法实现函数的复用。</li>
+  <li>传入对象会被作为新对象的原型, 会被所有的实例对象所共享, 容易造成修改的混乱。</li>
+  <li>创建子类型的时候不能向超类型传递参数。</li>
+  <li>实例是父类的实例。</li>
+</ol>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">CreateObj</span><span class="p">(</span><span class="nx">obj</span><span class="p">)</span> <span class="p">{</span>
+	<span class="c1">// 把传进来的对象作为新创建对象的原型</span>
+	<span class="kd">let</span> <span class="nx">newObj</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nf">create</span><span class="p">(</span><span class="nx">obj</span><span class="p">);</span>
+	<span class="c1">// 简单的一些扩展</span>
+	<span class="nx">newObj</span><span class="p">.</span><span class="nx">colors</span> <span class="o">=</span> <span class="p">[</span><span class="dl">"</span><span class="s2">red</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">blue</span><span class="dl">"</span><span class="p">];</span>
+
+	<span class="k">return</span> <span class="nx">newObj</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nf">Father</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">age</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+	<span class="k">this</span><span class="p">.</span><span class="nx">age</span> <span class="o">=</span> <span class="nx">age</span><span class="p">;</span>
+	<span class="k">this</span><span class="p">.</span><span class="nx">sayFather</span> <span class="o">=</span> <span class="nf">function </span><span class="p">()</span> <span class="p">{</span>
+		<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">child sayFather</span><span class="dl">"</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">age</span><span class="p">);</span>
+	<span class="p">};</span>
+	<span class="k">this</span><span class="p">.</span><span class="nx">fatherColors</span> <span class="o">=</span> <span class="p">[</span><span class="dl">"</span><span class="s2">green</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">yellow</span><span class="dl">"</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">child</span> <span class="o">=</span> <span class="nc">CreateObj</span><span class="p">(</span><span class="k">new</span> <span class="nc">Father</span><span class="p">(</span><span class="dl">"</span><span class="s2">randy</span><span class="dl">"</span><span class="p">,</span> <span class="mi">24</span><span class="p">));</span>
+</code></pre></div></div>
+
+<h3 id="5-寄生式组合继承">5. 寄生式组合继承</h3>
+
+<blockquote>
+  <p>组合继承的缺点就是使用超类型的实例作为子类型的原型, 导致添加了不必要的原型属性。寄生式组合继承的方式是使用父类型的原型的副本来作为子类型的原型, 这样就避免了创建不必要的属性。该继承方式是组合继承的升级版, 有如下特点</p>
+</blockquote>
+
+<ol>
+  <li>原型在包含有引用类型的数据时, 会被所有的实例对象所共享, 容易造成修改的混乱。</li>
+  <li>创建子类型的时候能向超类型传递参数。</li>
+  <li>实例对象不再臃肿, 原型只包含父类的原型。</li>
+  <li>实例对象既属于父类又属于子类。</li>
+</ol>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">CreateObj</span><span class="p">(</span><span class="nx">obj</span><span class="p">)</span> <span class="p">{</span>
+	<span class="c1">// 把传进来的对象作为新创建对象的原型</span>
+	<span class="kd">let</span> <span class="nx">newObj</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nf">create</span><span class="p">(</span><span class="nx">obj</span><span class="p">);</span>
+	<span class="c1">// 简单的一些扩展</span>
+	<span class="nx">newObj</span><span class="p">.</span><span class="nx">say</span> <span class="o">=</span> <span class="nf">function </span><span class="p">()</span> <span class="p">{</span>
+		<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">say</span><span class="dl">"</span><span class="p">);</span>
+	<span class="p">};</span>
+
+	<span class="k">return</span> <span class="nx">newObj</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// 父类</span>
+<span class="kd">function</span> <span class="nf">Father</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">age</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+	<span class="k">this</span><span class="p">.</span><span class="nx">age</span> <span class="o">=</span> <span class="nx">age</span><span class="p">;</span>
+	<span class="k">this</span><span class="p">.</span><span class="nx">fatherColors</span> <span class="o">=</span> <span class="p">[</span><span class="dl">"</span><span class="s2">green</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">yellow</span><span class="dl">"</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="c1">//子类</span>
+<span class="kd">function</span> <span class="nf">Child</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">age</span><span class="p">)</span> <span class="p">{</span>
+	<span class="c1">// 构造继承</span>
+	<span class="nx">Father</span><span class="p">.</span><span class="nf">call</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">age</span><span class="p">);</span>
+	<span class="k">this</span><span class="p">.</span><span class="nx">colors</span> <span class="o">=</span> <span class="p">[</span><span class="dl">"</span><span class="s2">red</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">blue</span><span class="dl">"</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="c1">// 将父类原型传递过去, 创建一个新对象, 不再是父类的实例对象</span>
+<span class="kd">const</span> <span class="nx">obj</span> <span class="o">=</span> <span class="nc">CreateObj</span><span class="p">(</span><span class="nx">Father</span><span class="p">.</span><span class="nx">prototype</span><span class="p">);</span>
+<span class="c1">// 寄生式组合继承 使用新对象作为子类的原型</span>
+<span class="nx">Child</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="nx">obj</span><span class="p">;</span>
+<span class="nx">Child</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="kd">constructor</span> <span class="o">=</span> <span class="nx">Child</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">child</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Child</span><span class="p">(</span><span class="dl">"</span><span class="s2">randy</span><span class="dl">"</span><span class="p">,</span> <span class="mi">26</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="6-类继承class-extends-继承">6. 类继承(class extends 继承)</h3>
+
+<blockquote>
+  <p>从上面 class 的介绍我们知道, 只有方法才会被挂载到原型上, 这是寄生式组合继承的升级版, 除了有寄生式组合继承的优点外还解决了原型修改混乱的问题。这应该是最佳的继承方式了</p>
+</blockquote>
+
+<ol>
+  <li>创建子类型的时候能向超类型传递参数。</li>
+  <li>实例既属于子类又属于父类。</li>
+  <li>实例对象不再臃肿, 原型只包含父类的原型。</li>
+</ol>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Father</span> <span class="p">{</span>
+	<span class="nf">constructor</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">age</span><span class="p">)</span> <span class="p">{</span>
+		<span class="c1">// 构造函数里面的属性或方法都会在子类实例上</span>
+		<span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+		<span class="k">this</span><span class="p">.</span><span class="nx">age</span> <span class="o">=</span> <span class="nx">age</span><span class="p">;</span>
+	<span class="p">}</span>
+
+	<span class="c1">// 父类方法会被挂载到原型的原型上</span>
+	<span class="nf">sayFather</span><span class="p">()</span> <span class="p">{</span>
+		<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">child sayFather</span><span class="dl">"</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">age</span><span class="p">);</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// 子类继承</span>
+<span class="kd">class</span> <span class="nc">Child</span> <span class="kd">extends</span> <span class="nc">Father</span> <span class="p">{</span>
+	<span class="nx">_colors</span> <span class="o">=</span> <span class="p">[</span><span class="dl">"</span><span class="s2">blue</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">red</span><span class="dl">"</span><span class="p">];</span>
+
+	<span class="nf">constructor</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">age</span><span class="p">,</span> <span class="nx">sex</span><span class="p">)</span> <span class="p">{</span>
+		<span class="c1">// 没参数</span>
+		<span class="c1">// super();</span>
+		<span class="c1">// 有参数</span>
+		<span class="k">super</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">age</span><span class="p">);</span>
+		<span class="k">this</span><span class="p">.</span><span class="nx">sex</span> <span class="o">=</span> <span class="nx">sex</span><span class="p">;</span>
+	<span class="p">}</span>
+
+	<span class="c1">// 方法会挂载到原型上</span>
+	<span class="nf">say</span><span class="p">()</span> <span class="p">{</span>
+		<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">child say</span><span class="dl">"</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">age</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">sex</span><span class="p">);</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">child</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Child</span><span class="p">(</span><span class="dl">"</span><span class="s2">randy</span><span class="dl">"</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="dl">"</span><span class="s2">male</span><span class="dl">"</span><span class="p">);</span>
+</code></pre></div></div>
 </div>
 
       <!-- 分享 -->
@@ -256,24 +392,24 @@ endfor
         <span class="share__title">Share this article:</span>
         <ul class="share__list list-reset">
           <li class="share__item">
-            <a class="share__facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/2020/12/23/%E5%88%9D%E8%AF%86-Jekyll/"
+            <a class="share__facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/2024/03/28/%E7%BB%A7%E6%89%BF/"
               onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
               title="Share on Facebook" rel="nofollow"><i class="ion ion-logo-facebook"></i></a>
           </li>
 
           <li class="share__item">
-            <a class="share__twitter" href="https://twitter.com/intent/tweet?text=%E5%88%9D%E8%AF%86%20Jekyll&url=http://localhost:4000/2020/12/23/%E5%88%9D%E8%AF%86-Jekyll/"
+            <a class="share__twitter" href="https://twitter.com/intent/tweet?text=%E7%BB%A7%E6%89%BF%E7%9A%84%E5%85%AD%E7%A7%8D%E6%96%B9%E5%BC%8F&url=http://localhost:4000/2024/03/28/%E7%BB%A7%E6%89%BF/"
               onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
               title="Share on Twitter" rel="nofollow"><i class="ion ion-logo-twitter"></i></a>
           </li>
 
           <li class="share__item">
-            <a class="share__linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/2020/12/23/%E5%88%9D%E8%AF%86-Jekyll/&title=%E5%88%9D%E8%AF%86%20Jekyll&summary=&source="
+            <a class="share__linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/2024/03/28/%E7%BB%A7%E6%89%BF/&title=%E7%BB%A7%E6%89%BF%E7%9A%84%E5%85%AD%E7%A7%8D%E6%96%B9%E5%BC%8F&summary=&source="
               onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn" rel="nofollow"><i class="ion ion-logo-linkedin"></i></a>
           </li>
 
           <li class="share__item">
-            <a class="share__pinterest" href="http://pinterest.com/pin/create/button/?url=http://localhost:4000/2020/12/23/%E5%88%9D%E8%AF%86-Jekyll/&amp;media=http://localhost:4000/images/&amp;description=%E5%88%9D%E8%AF%86%20Jekyll"
+            <a class="share__pinterest" href="http://pinterest.com/pin/create/button/?url=http://localhost:4000/2024/03/28/%E7%BB%A7%E6%89%BF/&amp;media=http://localhost:4000/images/&amp;description=%E7%BB%A7%E6%89%BF%E7%9A%84%E5%85%AD%E7%A7%8D%E6%96%B9%E5%BC%8F"
               onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;" title="Share on Pinterest"
               rel="nofollow"><i class="ion ion-logo-pinterest"></i></a>
           </li>
@@ -286,27 +422,29 @@ endfor
 <!-- 上一篇 下一篇 -->
 <div class="container" style="display: none;">
   <div class="post__navigation">
-     
-    <div class="next">
+    
+    <div class="prev">
       <a
         class="post__nav__image"
         href="/2020/12/24/Markdown-%E6%A6%82%E8%BF%B0/"
         style="background-image: url(/images/markdown.jpg)"
-      >
-      </a>
+      ></a>
       <h2 class="post__nav__title">
-        <a href="/2020/12/24/Markdown-%E6%A6%82%E8%BF%B0/">Markdown 概述</a>
-        <i class="ion ion-md-arrow-forward"></i>
+        <i class="ion ion-md-arrow-back"></i>
+        <a href="/2020/12/24/Markdown-%E6%A6%82%E8%BF%B0/"
+          >Markdown 概述</a
+        >
       </h2>
-      <p class="next__excerpt">
-         ## 一、块级元素
+      <p class="prev__excerpt">
+         一、块级元素
 
-### 1. 段落和换行
-- md 文件中，如果你需要换行，可以在一个段落之后加上一个或多个空行（即使空行中包含了空格或者空白字符也被认为是空行）；
-- 如果你需要添加一个``标签，则可以在行... 
+1. 段落和换行
+
+  md 文件中，如果你需要换行，可以在一个段落之后加上一个或多个空行（即使空行中包含了空格或者空白字符也被认为是空行）；
+  如果你需要添加一个&lt;br /&gt;标签，则... 
       </p>
     </div>
-    
+     
   </div>
 
    <!-- begin comments -->
